@@ -57,6 +57,7 @@ export const createTicketBody = z
         z.object({
           resourceType: z.string().trim().min(1).max(120),
           minutes: z.number().int().min(0).max(59_999),
+          estimatedAt: z.iso.datetime().optional(),
         }),
       )
       .max(50)
@@ -104,8 +105,12 @@ export const bulkUpdateBody = z
         sprintId: z.uuid().nullish(),
         dueDate: isoDate.nullish(),
       })
-      .refine((value) => Object.keys(value).length > 0, "Choose at least one field to change"),
+      .default({}),
     addEpicIds: z.array(z.uuid()).max(50).optional(),
+  })
+  .refine((value) => Object.keys(value.set).length > 0 || (value.addEpicIds?.length ?? 0) > 0, {
+    message: "Choose at least one field to change",
+    path: ["set"],
   })
   .meta({ id: "BulkUpdateTicketsRequest" });
 export const bulkDeleteBody = z.object({ ticketIds }).meta({ id: "BulkDeleteTicketsRequest" });

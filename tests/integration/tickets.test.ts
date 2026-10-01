@@ -212,6 +212,37 @@ describe("ticket updates and moves", () => {
   });
 });
 
+describe("bulk edit and create extras", () => {
+  it("accepts an epics-only bulk edit but rejects an empty one", async () => {
+    const w = await projectWorld();
+    const a = await newTicket(w.developer, w.project.id);
+    const epic = (await call(w.developer, "post", `/projects/${w.project.id}/epics`, { name: "E" }))
+      .body.data;
+    const ok = await call(w.developer, "post", `/projects/${w.project.id}/tickets/bulk-update`, {
+      ticketIds: [a.id],
+      addEpicIds: [epic.id],
+    });
+    expect(ok.status).toBe(200);
+    expect((await call(w.developer, "get", `/tickets/${a.id}`)).body.data.epicIds).toEqual([
+      epic.id,
+    ]);
+    const empty = await call(w.developer, "post", `/projects/${w.project.id}/tickets/bulk-update`, {
+      ticketIds: [a.id],
+      set: {},
+    });
+    expect(empty.status).toBe(400);
+  });
+
+  it("keeps the estimate date picked at creation", async () => {
+    const w = await projectWorld();
+    const ticket = await newTicket(w.developer, w.project.id, {
+      estimates: [{ resourceType: "QA", minutes: 60, estimatedAt: "2026-03-04T10:00:00.000Z" }],
+    });
+    const estimates = (await call(w.developer, "get", `/tickets/${ticket.id}/estimates`)).body.data;
+    expect(estimates[0].estimatedAt).toBe("2026-03-04T10:00:00.000Z");
+  });
+});
+
 describe("ticket deletion", () => {
   it("allows managers to delete tickets without logged time only", async () => {
     const w = await projectWorld();

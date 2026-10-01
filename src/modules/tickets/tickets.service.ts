@@ -179,7 +179,7 @@ export type CreateTicketInput = {
   storyPoints?: number | null;
   dueDate?: string | null;
   epicIds?: string[];
-  estimates?: { resourceType: string; minutes: number }[];
+  estimates?: { resourceType: string; minutes: number; estimatedAt?: string }[];
 };
 
 /**
@@ -236,6 +236,7 @@ export async function createTicket(actor: Actor, projectId: string, input: Creat
         ticketId: created.id,
         resourceType: estimate.resourceType,
         minutes: estimate.minutes,
+        ...(estimate.estimatedAt ? { estimatedAt: new Date(estimate.estimatedAt) } : {}),
       })),
     );
     return created;
@@ -471,7 +472,7 @@ export async function bulkUpdateTickets(actor: Actor, projectId: string, input: 
   const { rows } = await requireBulkTickets(actor, projectId, input.ticketIds);
   await db.transaction(async (tx) => {
     await validateRefs(tx, projectId, { ...input.set, epicIds: input.addEpicIds });
-    await repo.updateTickets(tx, input.ticketIds, input.set);
+    if (Object.keys(input.set).length > 0) await repo.updateTickets(tx, input.ticketIds, input.set);
     if (input.set.columnId) {
       const name = await columnName(tx, projectId, input.set.columnId);
       await repo.insertStageHistory(
