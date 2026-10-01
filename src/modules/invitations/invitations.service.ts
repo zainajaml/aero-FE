@@ -64,7 +64,7 @@ async function assertRoleAssignable(
 }
 
 /** Seats per project: active non-super-admin members (excluding the caller) + pending invitees. */
-async function countProjectPeople(
+export async function countProjectPeople(
   callerId: string,
   projectIds: string[],
 ): Promise<Record<string, number>> {
