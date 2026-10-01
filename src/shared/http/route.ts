@@ -40,6 +40,8 @@ export type RouteDefinition<P = unknown, Q = unknown, B = unknown, A extends boo
   /** Documented error statuses besides 400 (validation) and 500. */
   errors?: number[];
   middleware?: RequestHandler[];
+  /** Documents a multipart/form-data body with one binary `file` field (parsed by `middleware`). */
+  upload?: { description: string };
   handler: (ctx: RouteContext<P, Q, B, A>) => Promise<unknown>;
 };
 
@@ -149,6 +151,18 @@ export function routesToOpenApiPaths(
       },
       ...(route.request?.body
         ? { requestBody: { content: { "application/json": { schema: route.request.body } } } }
+        : {}),
+      ...(route.upload
+        ? {
+            requestBody: {
+              description: route.upload.description,
+              content: {
+                "multipart/form-data": {
+                  schema: z.object({ file: z.string().meta({ format: "binary" }) }),
+                },
+              },
+            },
+          }
         : {}),
       responses: responses as ZodOpenApiOperationObject["responses"],
     };

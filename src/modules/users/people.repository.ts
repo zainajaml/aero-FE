@@ -74,3 +74,17 @@ export async function listProjectAccessibleUsers(db: DbExecutor, projectId: stri
       ),
     );
 }
+
+/** True when `viewerId` shares a project or account with `otherId` (ports shares_project). */
+export async function sharesProject(
+  db: DbExecutor,
+  viewerId: string,
+  otherId: string,
+): Promise<boolean> {
+  const rows = await db
+    .select({ id: profiles.id })
+    .from(profiles)
+    .where(and(eq(profiles.id, otherId), sharesProjectWith(viewerId)))
+    .limit(1);
+  return rows.length > 0;
+}

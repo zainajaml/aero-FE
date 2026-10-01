@@ -11,6 +11,9 @@ Object.assign(process.env, {
   AUTH_SECRET: "openapi-generation-only-secret-0123456789",
   SMTP_URL: "memory://",
   EMAIL_FROM: "Space Scope <noreply@localhost>",
+  S3_BUCKET: "openapi",
+  S3_ACCESS_KEY_ID: "openapi",
+  S3_SECRET_ACCESS_KEY: "openapi",
 });
 
 const { buildOpenApiDocument } = await import("../src/openapi.js");

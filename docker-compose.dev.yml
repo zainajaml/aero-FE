@@ -33,5 +33,14 @@ services:
     image: axllent/mailpit:latest
     ports: ["127.0.0.1:1026:1025", "127.0.0.1:8026:8025"]
 
+  storage:
+    image: rustfs/rustfs:latest
+    environment:
+      RUSTFS_ACCESS_KEY: azf_storage
+      RUSTFS_SECRET_KEY: azf_storage_secret
+    ports: ["127.0.0.1:9100:9000"]
+    volumes: [storagedata:/data]
+
 volumes:
   pgdata:
+  storagedata:
