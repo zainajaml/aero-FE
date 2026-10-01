@@ -51,6 +51,10 @@ const schema = z
       .default("false")
       .transform((value) => value === "true"),
     FILE_URL_TTL_SECONDS: z.coerce.number().int().min(30).max(86_400).default(3_600),
+
+    BILLING_API_URL: z.url().optional(),
+    BILLING_API_KEY: optionalString,
+    BILLING_TENANT_ID: optionalString,
   })
   .superRefine((env, ctx) => {
     if (Boolean(env.GOOGLE_CLIENT_ID) !== Boolean(env.GOOGLE_CLIENT_SECRET)) {
@@ -58,6 +62,13 @@ const schema = z
         code: "custom",
         path: ["GOOGLE_CLIENT_SECRET"],
         message: "GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET must be set together",
+      });
+    }
+    if (env.BILLING_API_KEY && (!env.BILLING_API_URL || !env.BILLING_TENANT_ID)) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["BILLING_API_URL"],
+        message: "BILLING_API_URL and BILLING_TENANT_ID are required with BILLING_API_KEY",
       });
     }
     if (env.NODE_ENV === "production" && KNOWN_WEAK_SECRETS.has(env.AUTH_SECRET.toLowerCase())) {
