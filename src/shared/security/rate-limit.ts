@@ -25,6 +25,13 @@ export const LIMITS = {
     { limit: 5, windowSeconds: 10 * MINUTE },
     { limit: 20, windowSeconds: DAY },
   ],
+  // OAuth endpoints used by MCP clients, per IP. Many users connect through the same hosted
+  // clients (e.g. Claude), so these stay generous while still bounding open registration.
+  oauthRegister: [
+    { limit: 20, windowSeconds: 10 * MINUTE },
+    { limit: 200, windowSeconds: DAY },
+  ],
+  oauthToken: [{ limit: 120, windowSeconds: MINUTE }],
   mcpRead: [{ limit: 60, windowSeconds: MINUTE }],
   mcpCreate: [
     { limit: 10, windowSeconds: MINUTE },

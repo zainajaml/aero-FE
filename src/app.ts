@@ -7,6 +7,8 @@ import { toNodeHandler } from "better-auth/node";
 import { env } from "./config/env.js";
 import { auth } from "./modules/auth/auth.js";
 import { healthRouter } from "./modules/health/health.routes.js";
+import { MCP_PATH } from "./modules/mcp/mcp.config.js";
+import { mcpMethodNotAllowed, mcpRequestHandler } from "./modules/mcp/mcp.http.js";
 import { buildOpenApiDocument } from "./openapi.js";
 import { apiRoutes } from "./routes.js";
 import { errorHandler, notFoundHandler } from "./shared/http/error-handler.js";
@@ -52,7 +54,24 @@ export function createApp() {
     ["/api/auth/request-password-reset", "/api/auth/send-verification-email"],
     rateLimitByRequest("auth:email-action", LIMITS.authEmailAction),
   );
+  app.post("/api/auth/oauth2/register", rateLimitByRequest("oauth:register", LIMITS.oauthRegister));
+  app.post("/api/auth/oauth2/token", rateLimitByRequest("oauth:token", LIMITS.oauthToken));
   app.all("/api/auth/*splat", toNodeHandler(auth));
+
+  // OAuth discovery for MCP clients lives at the origin root (RFC 8414 path insertion for the
+  // /api/auth issuer, RFC 9728 for the MCP resource); Better Auth's plugins answer these paths.
+  app.all(
+    [
+      "/.well-known/oauth-authorization-server/api/auth",
+      "/.well-known/oauth-protected-resource",
+      `/.well-known/oauth-protected-resource${MCP_PATH}`,
+    ],
+    toNodeHandler(auth),
+  );
+
+  // MCP (non-browser clients, bearer tokens; no cookies, so browser CORS stays as is).
+  app.post(MCP_PATH, mcpRequestHandler);
+  app.all(MCP_PATH, mcpMethodNotAllowed);
 
   app.use(express.json({ limit: "1mb" }));
 

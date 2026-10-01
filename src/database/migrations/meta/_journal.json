@@ -351,6 +351,13 @@
       "when": 1790857003648,
       "tag": "0049_fn_notify_access_changed",
       "breakpoints": true
+    },
+    {
+      "idx": 50,
+      "version": "7",
+      "when": 1790861722637,
+      "tag": "0050_add_mcp_oauth_tables",
+      "breakpoints": true
     }
   ]
 }
