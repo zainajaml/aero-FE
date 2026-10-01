@@ -112,3 +112,23 @@ export async function isUserArchived(db: DbExecutor, userId: string): Promise<bo
     .limit(1);
   return rows.length > 0;
 }
+
+export async function listAdminProjectIds(db: DbExecutor, userId: string): Promise<string[]> {
+  const rows = await db
+    .select({ projectId: projectMembers.projectId })
+    .from(projectMembers)
+    .where(and(eq(projectMembers.userId, userId), eq(projectMembers.role, "admin")));
+  return rows.map((row) => row.projectId);
+}
+
+export async function listProjectIdsInAccounts(
+  db: DbExecutor,
+  accountIds: string[],
+): Promise<string[]> {
+  if (accountIds.length === 0) return [];
+  const rows = await db
+    .select({ id: projects.id })
+    .from(projects)
+    .where(inArray(projects.accountId, accountIds));
+  return rows.map((row) => row.id);
+}

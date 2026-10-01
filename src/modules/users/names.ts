@@ -12,3 +12,29 @@ export function splitFullName(fullName: string | null | undefined): {
 export function displayNameFromEmail(email: string): string {
   return email.split("@")[0] ?? email;
 }
+
+const ROLE_LABELS: Record<string, string> = {
+  super_admin: "Super Admin",
+  account_admin: "Account Admin",
+  admin: "Project Admin",
+  developer: "Developer",
+  team: "Team",
+  viewer: "Viewer",
+};
+
+export function roleLabel(role: string | null | undefined): string {
+  if (!role) return "—";
+  return ROLE_LABELS[role] ?? role.replace(/_/g, " ");
+}
+
+type NameParts = {
+  fullName?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+} | null;
+
+/** "First Last", else full name, else the fallback (ports formatDisplayName). */
+export function displayName(profile: NameParts, fallback: string): string {
+  const joined = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim();
+  return joined || profile?.fullName?.trim() || fallback;
+}

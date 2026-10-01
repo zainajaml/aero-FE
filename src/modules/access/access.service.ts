@@ -72,3 +72,38 @@ export async function getAccessSummary(actor: Actor): Promise<AccessSummary> {
     projectAccounts: Object.fromEntries(visible.map((p) => [p.projectId, p.accountId])),
   };
 }
+
+export type AdminScope = {
+  isGlobalAdmin: boolean;
+  isAccountAdmin: boolean;
+  isProjectAdmin: boolean;
+  /** Accounts administered (empty for super admins, who are unrestricted). */
+  accountIds: string[];
+  /** Projects administered through account grants or project admin role (empty for super admins). */
+  projectIds: string[];
+};
+
+/**
+ * Administrative reach of the actor (ports authz.server requireAdminScope). Account admins count by
+ * grant or by role row; project admins by a real project_members admin role.
+ */
+export async function requireAdminScope(actor: Actor): Promise<AdminScope> {
+  const isGlobalAdmin = policy.isSuperAdmin(actor);
+  const isAccountAdmin =
+    actor.globalRoles.includes("account_admin") || actor.adminAccountIds.length > 0;
+  const adminProjectIds = isGlobalAdmin ? [] : await repo.listAdminProjectIds(db, actor.userId);
+  const isProjectAdmin = adminProjectIds.length > 0;
+  if (!isGlobalAdmin && !isAccountAdmin && !isProjectAdmin) {
+    throw new ForbiddenError("Admin access required");
+  }
+  if (isGlobalAdmin)
+    return { isGlobalAdmin, isAccountAdmin, isProjectAdmin, accountIds: [], projectIds: [] };
+  const accountProjectIds = await repo.listProjectIdsInAccounts(db, actor.adminAccountIds);
+  return {
+    isGlobalAdmin,
+    isAccountAdmin,
+    isProjectAdmin,
+    accountIds: actor.adminAccountIds,
+    projectIds: [...new Set([...accountProjectIds, ...adminProjectIds])],
+  };
+}

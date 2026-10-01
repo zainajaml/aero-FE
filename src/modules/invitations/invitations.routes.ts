@@ -1,0 +1,76 @@
+import { defineRoute } from "../../shared/http/route.js";
+import * as schemas from "./invitations.schemas.js";
+import * as service from "./invitations.service.js";
+
+const tags = ["invitations"];
+
+export const invitationRoutes = [
+  defineRoute({
+    method: "post",
+    path: "/invitations",
+    operationId: "createInvitation",
+    summary: "Invite a person to projects or accounts (admins only)",
+    tags,
+    request: { body: schemas.createInvitationBody },
+    response: { status: 201, schema: schemas.createInvitationResult },
+    errors: [403, 404, 409, 429],
+    handler: ({ actor, body }) => service.createInvitation(actor, body),
+  }),
+  defineRoute({
+    method: "post",
+    path: "/invitations/:invitationId/resend",
+    operationId: "resendInvitation",
+    summary: "Issue a fresh link for a pending invitation and email it again",
+    tags,
+    request: { params: schemas.invitationIdParams },
+    response: { status: 200, schema: schemas.resendResult },
+    errors: [403, 404, 409, 429],
+    handler: ({ actor, params }) => service.resendInvitation(actor, params.invitationId),
+  }),
+  defineRoute({
+    method: "delete",
+    path: "/invitations/:invitationId",
+    operationId: "revokeInvitation",
+    summary: "Revoke a pending invitation",
+    tags,
+    request: { params: schemas.invitationIdParams },
+    response: { status: 204 },
+    errors: [403, 404, 409],
+    handler: ({ actor, params }) => service.revokeInvitation(actor, params.invitationId),
+  }),
+  defineRoute({
+    method: "post",
+    path: "/invitations/lookup",
+    operationId: "lookupInvitation",
+    summary: "Describe an invitation by token (public; identical answer for unknown tokens)",
+    tags,
+    auth: false,
+    request: { body: schemas.lookupBody },
+    response: { status: 200, schema: schemas.lookupResult },
+    errors: [429],
+    handler: ({ req, body }) => service.lookupInvitation(body.token, req.ip ?? "unknown"),
+  }),
+  defineRoute({
+    method: "post",
+    path: "/invitations/accept-with-password",
+    operationId: "acceptInvitationWithPassword",
+    summary: "Create a password account for an invited email and accept the invitation (public)",
+    tags,
+    auth: false,
+    request: { body: schemas.acceptWithPasswordBody },
+    response: { status: 201, schema: schemas.acceptWithPasswordResult },
+    errors: [409, 429],
+    handler: ({ req, body }) => service.acceptWithPassword(body, req.ip ?? "unknown"),
+  }),
+  defineRoute({
+    method: "post",
+    path: "/invitations/accept",
+    operationId: "acceptInvitation",
+    summary: "Accept an invitation addressed to the signed-in user's email",
+    tags,
+    request: { body: schemas.acceptBody },
+    response: { status: 200, schema: schemas.acceptResult },
+    errors: [403],
+    handler: ({ actor, body }) => service.acceptInvitation(actor, body.token),
+  }),
+];
