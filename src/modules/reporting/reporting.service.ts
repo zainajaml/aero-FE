@@ -2,8 +2,7 @@ import { db } from "../../database/client.js";
 import { summarizeThread } from "../../integrations/ai/summarizer.js";
 import { LIMITS, enforceRateLimit } from "../../shared/security/rate-limit.js";
 import * as policy from "../access/access.policy.js";
-import { listVisibleProjectAccounts } from "../access/access.repository.js";
-import { requireProjectMember } from "../access/access.service.js";
+import { requireProjectMember, visibleProjectIds } from "../access/access.service.js";
 import type { Actor } from "../access/access.types.js";
 import { listProjects } from "../projects/projects.repository.js";
 import { listColumns } from "../board/board.repository.js";
@@ -12,16 +11,6 @@ import { requireTicketReader } from "../tickets/ticket-access.js";
 import { listProjectAccessibleUsers, listVisibleProfiles } from "../users/people.repository.js";
 import { displayName } from "../users/names.js";
 import * as repo from "./reporting.repository.js";
-
-/** Requested projects narrowed to the ones the actor can read (all visible ones when none requested). */
-export async function visibleProjectIds(actor: Actor, requested?: string[]): Promise<string[]> {
-  const visible = policy.isSuperAdmin(actor)
-    ? (await listProjects(db, { all: true })).map((p) => p.id)
-    : (await listVisibleProjectAccounts(db, actor, false)).map((p) => p.projectId);
-  if (!requested || requested.length === 0) return visible;
-  const set = new Set(visible);
-  return requested.filter((id) => set.has(id));
-}
 
 export async function workLogs(
   actor: Actor,

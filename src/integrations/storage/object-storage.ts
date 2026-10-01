@@ -69,6 +69,18 @@ export async function deleteObjects(area: StorageArea, keys: string[]): Promise<
   );
 }
 
+/** Streams an object (for same-origin previews such as PDF.js). */
+export async function getObjectStream(area: StorageArea, key: string) {
+  const result = await client.send(
+    new GetObjectCommand({ Bucket: env.S3_BUCKET, Key: objectKey(area, key) }),
+  );
+  return {
+    body: result.Body as NodeJS.ReadableStream,
+    contentType: result.ContentType,
+    contentLength: result.ContentLength,
+  };
+}
+
 /** Creates the bucket when missing (local development and tests; production buckets are provisioned). */
 export async function ensureBucket(): Promise<void> {
   try {

@@ -107,3 +107,13 @@ export async function requireAdminScope(actor: Actor): Promise<AdminScope> {
     projectIds: [...new Set([...accountProjectIds, ...adminProjectIds])],
   };
 }
+
+/** Requested projects narrowed to the ones the actor can read (all visible ones when none requested). */
+export async function visibleProjectIds(actor: Actor, requested?: string[]): Promise<string[]> {
+  const visible = policy.isSuperAdmin(actor)
+    ? await repo.listAllProjectIds(db)
+    : (await repo.listVisibleProjectAccounts(db, actor, false)).map((p) => p.projectId);
+  if (!requested || requested.length === 0) return visible;
+  const set = new Set(visible);
+  return requested.filter((id) => set.has(id));
+}

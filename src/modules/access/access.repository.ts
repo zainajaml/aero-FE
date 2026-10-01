@@ -132,3 +132,7 @@ export async function listProjectIdsInAccounts(
     .where(inArray(projects.accountId, accountIds));
   return rows.map((row) => row.id);
 }
+
+export async function listAllProjectIds(db: DbExecutor): Promise<string[]> {
+  return (await db.select({ id: projects.id }).from(projects)).map((row) => row.id);
+}

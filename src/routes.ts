@@ -3,6 +3,7 @@ import { meRoutes } from "./modules/access/me.routes.js";
 import { accountRoutes } from "./modules/accounts/accounts.routes.js";
 import { billingRoutes } from "./modules/billing/billing.routes.js";
 import { boardRoutes } from "./modules/board/board.routes.js";
+import { documentRoutes } from "./modules/documents/documents.routes.js";
 import { epicRoutes } from "./modules/epics/epics.routes.js";
 import { fileRoutes } from "./modules/files/files.routes.js";
 import { invitationRoutes } from "./modules/invitations/invitations.routes.js";
@@ -32,4 +33,5 @@ export const apiRoutes: AnyRoute[] = [
   ...ticketRoutes,
   ...billingRoutes,
   ...reportingRoutes,
+  ...documentRoutes,
 ];

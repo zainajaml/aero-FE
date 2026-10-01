@@ -93,14 +93,12 @@ describe("reporting", () => {
   it("computes utilisation against prorated 40h weeks", async () => {
     const w = await projectWorld();
     const t = await newTicket(w.developer, w.project.id, { assigneeId: w.developer.id });
-    await db
-      .insert(workLogs)
-      .values({
-        ticketId: t.id,
-        userId: w.developer.id,
-        minutes: 1200,
-        loggedAt: new Date("2026-09-08T10:00:00Z"),
-      });
+    await db.insert(workLogs).values({
+      ticketId: t.id,
+      userId: w.developer.id,
+      minutes: 1200,
+      loggedAt: new Date("2026-09-08T10:00:00Z"),
+    });
     const report = (
       await call(
         w.manager,
