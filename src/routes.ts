@@ -6,6 +6,7 @@ import { boardRoutes } from "./modules/board/board.routes.js";
 import { epicRoutes } from "./modules/epics/epics.routes.js";
 import { fileRoutes } from "./modules/files/files.routes.js";
 import { invitationRoutes } from "./modules/invitations/invitations.routes.js";
+import { jiraRoutes } from "./modules/jira/jira.routes.js";
 import { notificationRoutes } from "./modules/notifications/notifications.routes.js";
 import { onboardingRoutes } from "./modules/onboarding/onboarding.routes.js";
 import { projectRoutes } from "./modules/projects/projects.routes.js";
@@ -30,4 +31,5 @@ export const apiRoutes: AnyRoute[] = [
   ...epicRoutes,
   ...ticketRoutes,
   ...billingRoutes,
+  ...jiraRoutes,
 ];
