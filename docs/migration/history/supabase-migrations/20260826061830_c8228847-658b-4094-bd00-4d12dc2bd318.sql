@@ -1,0 +1,3 @@
+ALTER TABLE public.user_roles REPLICA IDENTITY FULL;
+ALTER TABLE public.project_members REPLICA IDENTITY FULL;
+ALTER TABLE public.account_admins REPLICA IDENTITY FULL;

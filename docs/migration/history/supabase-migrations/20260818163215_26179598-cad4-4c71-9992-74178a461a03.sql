@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.guard_project_account_move() FROM anon, authenticated;

@@ -1,0 +1,1 @@
+ALTER TABLE public.sprints DROP COLUMN IF EXISTS capacity_hours;

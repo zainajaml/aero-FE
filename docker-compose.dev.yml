@@ -1,0 +1,37 @@
+name: aero-zenith-flow-dev
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: azf
+      POSTGRES_PASSWORD: azf_dev_password
+      POSTGRES_DB: aero_zenith_flow
+    ports: ["127.0.0.1:5434:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U azf -d aero_zenith_flow"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  postgres-test:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: azf
+      POSTGRES_PASSWORD: azf_test_password
+      POSTGRES_DB: aero_zenith_flow_test
+    ports: ["127.0.0.1:5435:5432"]
+    tmpfs: [/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U azf -d aero_zenith_flow_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports: ["127.0.0.1:1026:1025", "127.0.0.1:8026:8025"]
+
+volumes:
+  pgdata:

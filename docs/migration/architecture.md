@@ -1,0 +1,20 @@
+# Target architecture (12 decisions)
+
+Agreed 2026-10-01. Repositories: `aero-zenith-flow-frontend` (React) and `aero-zenith-flow-backend` (Express), independent manifests, lockfiles (npm), CI and deployments. The frontend consumes a pinned copy of `openapi/openapi.json`; it never imports backend source.
+
+1. **Domains** — auth, users, access, invitations, onboarding, accounts, projects, sprints, tickets, epics, comments, worklogs, documents, files, reporting, ai, support, notifications, audit, billing, jira, mcp. Modules expose services; repositories stay private to their module.
+2. **Frontend** — React 19 + Vite SPA, TanStack Router (file routes, same paths as the source), TanStack Query, shadcn/Tailwind 4 kept. `src/app` (bootstrap), `src/routes` (thin), `src/features/<domain>/{api,hooks,components,views}`, `src/shared/{api,ui,lib}`.
+3. **Backend** — Express 5. `src/modules/<module>/<m>.{routes,service,repository,schemas,policy}.ts`; `src/shared/http` (errors, envelope, route helper, validation), `src/shared/security` (authenticate, CSRF, rate limit); `src/integrations/*` for providers. `defineRoute` declares path, validation, auth, response schema and handler once; it mounts the Express route and produces the OpenAPI operation.
+4. **Database** — PostgreSQL 17, Drizzle ORM, drizzle-kit as the only migration authority (`src/database/migrations`, one table per file, functions/triggers as custom SQL). Migrations run as a release step under a Postgres advisory lock. Transactions for multi-step invariants. Source histories archived in `history/`.
+5. **Auth** — Better Auth (Drizzle adapter, UUID ids): email/password with required verification, reset, Google, HttpOnly `azf.*` cookies (7-day sessions, daily refresh), archived users blocked at session creation and per request. Durable, shared rate limits on auth endpoints. Invitation side effects of the old `handle_new_user` trigger run after verification. Authorization = `access` module policies (ported RLS helpers) evaluated with a trusted actor loaded from the session; no client-supplied identity. MCP OAuth via Better Auth MCP plugin (later slice).
+6. **API** — REST under `/api/v1`, named domain operations, cursor pagination for large lists, no generic query endpoint. Better Auth protocol routes under `/api/auth/*`.
+7. **Validation** — Zod 4 schemas per route (params/query/body parsed separately), same schemas generate OpenAPI (zod-openapi). Frontend forms: react-hook-form + Zod.
+8. **State** — TanStack Query with per-feature key factories that include actor/account/project scope; cache cleared on logout, account switch and role downgrade. Auth read model from `/me/access`.
+9. **Errors/observability** — typed `AppError` subclasses, Postgres errors translated centrally (23505/23503/23514, AZ001 PROJECT_ARCHIVED, AZ002 ACCOUNT_ADMIN_PROJECT_ROLE), one error middleware, `{ error: { code, message, details }, meta: { requestId } }`, pino with redaction, `X-Request-Id`. Bounded retries (p-retry) only for transient provider failures.
+10. **Tests** — Vitest + Supertest against Testcontainers PostgreSQL built from all migrations; per-test truncation; actor fixtures for every role; Playwright E2E in the frontend.
+11. **OpenAPI** — generated from route definitions (`npm run openapi:generate`), Swagger UI at `/api/docs` outside production, committed spec checked for drift in CI.
+12. **Libraries** — express 5.2, zod 4, zod-openapi 6, drizzle-orm 0.45 / drizzle-kit 0.31, pg 8, better-auth 1.7, pino 10, helmet 8, cors, p-retry 8, nodemailer 7 + @react-email (existing templates), vitest 5, supertest, @testcontainers/postgresql, madge, knip, typescript 5.9.
+
+## Envelope exceptions (documented)
+
+Better Auth protocol responses (`/api/auth/*`), health probes (`/health/live`, `/health/ready`), 204 responses, file downloads/streams, SSE, OAuth/MCP endpoints and provider webhooks.

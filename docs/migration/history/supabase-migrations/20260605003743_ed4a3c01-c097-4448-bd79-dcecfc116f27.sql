@@ -1,0 +1,1 @@
+UPDATE public.tickets SET position = -EXTRACT(EPOCH FROM created_at) WHERE position = 0;

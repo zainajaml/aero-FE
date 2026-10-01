@@ -1,0 +1,1 @@
+DELETE FROM public.accounts WHERE id = 'b62875dc-1432-44d1-892f-549a36f498ed';

@@ -1,0 +1,25 @@
+
+CREATE INDEX IF NOT EXISTS idx_work_logs_ticket ON public.work_logs (ticket_id);
+CREATE INDEX IF NOT EXISTS idx_work_logs_user ON public.work_logs (user_id);
+CREATE INDEX IF NOT EXISTS idx_ticket_epics_epic ON public.ticket_epics (epic_id);
+CREATE INDEX IF NOT EXISTS idx_tickets_project_created ON public.tickets (project_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_tickets_sprint ON public.tickets (sprint_id);
+CREATE INDEX IF NOT EXISTS idx_tickets_column ON public.tickets (column_id);
+CREATE INDEX IF NOT EXISTS idx_tickets_assignee ON public.tickets (assignee_id);
+CREATE INDEX IF NOT EXISTS idx_comments_ticket_created ON public.comments (ticket_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_attachments_ticket ON public.attachments (ticket_id);
+CREATE INDEX IF NOT EXISTS idx_sprints_project ON public.sprints (project_id);
+CREATE INDEX IF NOT EXISTS idx_board_columns_project ON public.board_columns (project_id, order_index);
+CREATE INDEX IF NOT EXISTS idx_epics_project ON public.epics (project_id);
+CREATE INDEX IF NOT EXISTS idx_support_issues_user ON public.support_issues (user_id);
+CREATE INDEX IF NOT EXISTS idx_support_issues_status ON public.support_issues (status);
+CREATE INDEX IF NOT EXISTS idx_support_messages_issue ON public.support_messages (issue_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_audit_logs_project_created ON public.audit_logs (project_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_audit_logs_user ON public.audit_logs (user_id);
+CREATE INDEX IF NOT EXISTS idx_project_members_user ON public.project_members (user_id);
+CREATE INDEX IF NOT EXISTS idx_account_admins_user ON public.account_admins (user_id);
+CREATE INDEX IF NOT EXISTS idx_email_send_log_recipient_created ON public.email_send_log (lower(recipient_email), created_at DESC);
+ANALYZE public.work_logs;
+ANALYZE public.ticket_epics;
+ANALYZE public.tickets;
+ANALYZE public.email_send_log;

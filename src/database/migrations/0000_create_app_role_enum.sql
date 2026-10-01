@@ -1,0 +1,1 @@
+CREATE TYPE "public"."app_role" AS ENUM('super_admin', 'account_admin', 'admin', 'developer', 'team', 'viewer');

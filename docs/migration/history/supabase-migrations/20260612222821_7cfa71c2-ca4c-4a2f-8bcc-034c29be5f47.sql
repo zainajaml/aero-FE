@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.list_project_accessible_users(uuid) FROM PUBLIC, anon;

@@ -1,0 +1,1 @@
+CREATE POLICY "roles account admin read" ON public.user_roles FOR SELECT USING (public.current_user_has_any_role(ARRAY['account_admin']::public.app_role[]));

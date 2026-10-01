@@ -1,0 +1,1 @@
+UPDATE public.projects SET account_id = '183ea66a-5a00-4576-9e4a-5dd4a1caf595' WHERE id = 'b6d462bc-6b83-43a7-bb1e-35b70bd0c62c';

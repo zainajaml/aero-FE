@@ -1,0 +1,1 @@
+ALTER TABLE "email_send_state" ADD COLUMN "send_delay_ms" integer DEFAULT 0 NOT NULL;

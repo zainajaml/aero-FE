@@ -1,0 +1,1 @@
+ALTER TABLE public.work_logs ADD COLUMN IF NOT EXISTS resource_type text;

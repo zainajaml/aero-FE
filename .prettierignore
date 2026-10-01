@@ -1,0 +1,5 @@
+dist
+coverage
+src/database/migrations/meta
+package-lock.json
+docs/migration/history
