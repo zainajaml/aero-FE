@@ -6,10 +6,12 @@ import { invitationRoutes } from "./modules/invitations/invitations.routes.js";
 import { onboardingRoutes } from "./modules/onboarding/onboarding.routes.js";
 import { projectRoutes } from "./modules/projects/projects.routes.js";
 import { peopleRoutes } from "./modules/users/people.routes.js";
+import { profileRoutes } from "./modules/users/profile.routes.js";
 
 /** Every /api/v1 operation, in one list, so the router and the OpenAPI document cannot diverge. */
 export const apiRoutes: AnyRoute[] = [
   ...meRoutes,
+  ...profileRoutes,
   ...invitationRoutes,
   ...onboardingRoutes,
   ...accountRoutes,
