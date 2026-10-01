@@ -1,0 +1,53 @@
+# Production-like stack for rehearsals and single-host deployments.
+# Secrets come from the environment or an env file: `docker compose -f docker-compose.prod.yml --env-file .env.production up -d`.
+name: aero-zenith-flow
+
+x-api-env: &api-env
+  NODE_ENV: production
+  PORT: 4000
+  LOG_LEVEL: ${LOG_LEVEL:-info}
+  TRUST_PROXY: ${TRUST_PROXY:-1}
+  DATABASE_URL: ${DATABASE_URL:?DATABASE_URL is required}
+  DATABASE_POOL_MAX: ${DATABASE_POOL_MAX:-10}
+  APP_URL: ${APP_URL:?APP_URL is required}
+  API_URL: ${API_URL:?API_URL is required}
+  CORS_ORIGINS: ${CORS_ORIGINS:-}
+  AUTH_SECRET: ${AUTH_SECRET:?AUTH_SECRET is required}
+  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+  SUPER_ADMIN_EMAIL_DOMAIN: ${SUPER_ADMIN_EMAIL_DOMAIN:-spacemanconsulting.com}
+  SMTP_URL: ${SMTP_URL:?SMTP_URL is required}
+  EMAIL_FROM: ${EMAIL_FROM:?EMAIL_FROM is required}
+  S3_ENDPOINT: ${S3_ENDPOINT:-}
+  S3_REGION: ${S3_REGION:-us-east-1}
+  S3_BUCKET: ${S3_BUCKET:?S3_BUCKET is required}
+  S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:?S3_ACCESS_KEY_ID is required}
+  S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:?S3_SECRET_ACCESS_KEY is required}
+  S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-false}
+  FILE_URL_TTL_SECONDS: ${FILE_URL_TTL_SECONDS:-3600}
+  BILLING_API_URL: ${BILLING_API_URL:-}
+  BILLING_API_KEY: ${BILLING_API_KEY:-}
+  BILLING_TENANT_ID: ${BILLING_TENANT_ID:-}
+  JIRA_CLIENT_ID: ${JIRA_CLIENT_ID:-}
+  JIRA_CLIENT_SECRET: ${JIRA_CLIENT_SECRET:-}
+  JIRA_REDIRECT_URI: ${JIRA_REDIRECT_URI:-}
+  JIRA_TOKEN_ENCRYPTION_KEY: ${JIRA_TOKEN_ENCRYPTION_KEY:-}
+  GOOGLE_GENERATIVE_AI_API_KEY: ${GOOGLE_GENERATIVE_AI_API_KEY:-}
+  AI_SUMMARY_MODEL: ${AI_SUMMARY_MODEL:-gemini-3-flash-preview}
+
+services:
+  migrate:
+    build: .
+    image: aero-zenith-flow-backend:${IMAGE_TAG:-local}
+    environment: *api-env
+    command: ["node", "dist/database/migrate.js"]
+    restart: "no"
+
+  api:
+    image: aero-zenith-flow-backend:${IMAGE_TAG:-local}
+    environment: *api-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports: ["127.0.0.1:${API_PORT:-4000}:4000"]
+    restart: unless-stopped
