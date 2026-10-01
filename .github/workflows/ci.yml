@@ -26,7 +26,8 @@ jobs:
       - name: OpenAPI contract is committed
         run: npm run openapi:generate && git diff --exit-code openapi/openapi.json
       # Integration tests start Postgres and S3 storage with Testcontainers (Docker is available on the runner).
-      - run: npm test
+      - name: Tests and API coverage gate (every OpenAPI operation has a success and a failure case)
+        run: npm run test:api-coverage
       - run: npm run build
       - name: Production image builds
         run: docker build -t aero-zenith-flow-backend:ci .

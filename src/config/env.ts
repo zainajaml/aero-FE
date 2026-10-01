@@ -63,6 +63,9 @@ const schema = z
     JIRA_CLIENT_SECRET: optionalString,
     JIRA_REDIRECT_URI: z.url().optional(),
     JIRA_TOKEN_ENCRYPTION_KEY: optionalString,
+
+    /** Test-only: append one JSON line per /api/v1 response (see scripts/api-coverage.ts). */
+    API_COVERAGE_FILE: optionalString,
   })
   .superRefine((env, ctx) => {
     if (Boolean(env.GOOGLE_CLIENT_ID) !== Boolean(env.GOOGLE_CLIENT_SECRET)) {

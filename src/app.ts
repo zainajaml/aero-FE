@@ -10,6 +10,7 @@ import { healthRouter } from "./modules/health/health.routes.js";
 import { MCP_PATH } from "./modules/mcp/mcp.config.js";
 import { mcpMethodNotAllowed, mcpRequestHandler } from "./modules/mcp/mcp.http.js";
 import { buildOpenApiDocument } from "./openapi.js";
+import { apiCoverageRecorder } from "./shared/http/api-coverage.js";
 import { apiRoutes } from "./routes.js";
 import { errorHandler, notFoundHandler } from "./shared/http/error-handler.js";
 import { requestId } from "./shared/http/request-context.js";
@@ -28,6 +29,8 @@ export function createApp() {
   app.set("trust proxy", env.TRUST_PROXY);
 
   app.use(requestId);
+  if (env.NODE_ENV === "test" && env.API_COVERAGE_FILE)
+    app.use(apiCoverageRecorder(env.API_COVERAGE_FILE));
   app.use(
     pinoHttp({
       logger,

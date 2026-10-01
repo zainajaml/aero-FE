@@ -84,7 +84,16 @@ export function mountRoutes(router: Router, routes: AnyRoute[]): void {
         next(error);
       }
     };
-    router[route.method](route.path, ...(route.middleware ?? []), handler);
+    // Tags the response with the documented operation, so recorders and logs see the pattern
+    // (e.g. /api/v1/tickets/:ticketId) even when a later middleware or error handler responds.
+    const tag: RequestHandler = (req, res, next) => {
+      res.locals.operation = {
+        method: route.method.toUpperCase(),
+        path: `${req.baseUrl}${route.path}`,
+      };
+      next();
+    };
+    router[route.method](route.path, tag, ...(route.middleware ?? []), handler);
   }
 }
 

@@ -264,6 +264,9 @@ describe("Jira import", () => {
     await makeAccountAdmin(account.id, otherAdmin.id);
     await connect(otherAdmin);
     const id = started.body.data.id;
+    const own = await call(admin, "get", `/jira/imports/${id}`);
+    expect(own.status).toBe(200);
+    expect(own.body.data).toMatchObject({ id, phase: started.body.data.phase });
     expect((await call(otherAdmin, "get", `/jira/imports/${id}`)).status).toBe(404);
     expect((await call(otherAdmin, "post", `/jira/imports/${id}/step`)).status).toBe(404);
   });

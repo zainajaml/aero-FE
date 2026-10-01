@@ -23,7 +23,9 @@
     "openapi:generate": "tsx scripts/generate-openapi.ts",
     "deps:cycles": "madge --circular --extensions ts,tsx --ts-config tsconfig.json src",
     "deps:unused": "knip",
-    "bootstrap:super-admin": "tsx --env-file=.env scripts/bootstrap-super-admin.ts"
+    "bootstrap:super-admin": "tsx --env-file=.env scripts/bootstrap-super-admin.ts",
+    "test:api-coverage": "tsx scripts/api-coverage.ts",
+    "smoke:prod": "bash scripts/smoke-prod.sh"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.87",
