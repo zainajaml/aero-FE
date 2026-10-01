@@ -9,6 +9,7 @@ import { documentRoutes } from "./modules/documents/documents.routes.js";
 import { epicRoutes } from "./modules/epics/epics.routes.js";
 import { fileRoutes } from "./modules/files/files.routes.js";
 import { invitationRoutes } from "./modules/invitations/invitations.routes.js";
+import { jiraRoutes } from "./modules/jira/jira.routes.js";
 import { notificationRoutes } from "./modules/notifications/notifications.routes.js";
 import { unsubscribeRoutes } from "./modules/notifications/unsubscribe.routes.js";
 import { onboardingRoutes } from "./modules/onboarding/onboarding.routes.js";
@@ -42,4 +43,5 @@ export const apiRoutes: AnyRoute[] = [
   ...unsubscribeRoutes,
   ...adminRoutes,
   ...auditRoutes,
+  ...jiraRoutes,
 ];

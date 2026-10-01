@@ -53,6 +53,10 @@ export function testEnv(databaseUrl: string, s3Endpoint = storageEndpoint): Reco
     S3_ACCESS_KEY_ID: "test_storage",
     S3_SECRET_ACCESS_KEY: "test_storage_secret",
     S3_FORCE_PATH_STYLE: "true",
+    JIRA_CLIENT_ID: "test-jira-client-id",
+    JIRA_CLIENT_SECRET: "test-jira-client-secret",
+    JIRA_REDIRECT_URI: "http://api.test/api/v1/jira/oauth/callback",
+    JIRA_TOKEN_ENCRYPTION_KEY: "test-only-jira-token-encryption-key-0123456789",
   };
 }
 
