@@ -7,10 +7,19 @@ import { RateLimitedError } from "../../shared/http/errors.js";
 import { logger } from "../../shared/observability/logger.js";
 import { LIMITS, enforceRateLimit } from "../../shared/security/rate-limit.js";
 import * as repo from "./email.repository.js";
+import { unsubscribeLinks } from "./unsubscribe.js";
 import { TEMPLATES, type TemplateName } from "./templates/registry.js";
 import type { TemplateEntry } from "./templates/template-entry.js";
 
 export const SITE_NAME = "Space Scope";
+
+/** Optional notification mail carries one-click unsubscribe headers (RFC 8058); account mail does not. */
+const UNSUBSCRIBABLE = new Set<TemplateName>([
+  "comment-mention",
+  "ticket-assignment",
+  "support-reply",
+  "support-admin-alert",
+]);
 
 export type SendEmailInput = {
   template: TemplateName;
@@ -93,13 +102,26 @@ export async function sendTemplateEmail(input: SendEmailInput): Promise<SendEmai
   }
 
   const logId = await repo.insertEmailLog(db, { ...base, status: "pending" });
-  return deliverLogged(logId, { to, subject, html, text });
+  const links = UNSUBSCRIBABLE.has(input.template) ? unsubscribeLinks(to) : null;
+  const headers = links
+    ? {
+        "List-Unsubscribe": `<${links.oneClick}>`,
+        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      }
+    : undefined;
+  return deliverLogged(logId, { to, subject, html, text, ...(headers ? { headers } : {}) });
 }
 
 /** Delivers an already-logged message with bounded retries; used for first sends and admin retries. */
 export async function deliverLogged(
   logId: string,
-  message: { to: string; subject: string; html: string; text: string },
+  message: {
+    to: string;
+    subject: string;
+    html: string;
+    text: string;
+    headers?: Record<string, string>;
+  },
 ): Promise<SendEmailResult> {
   try {
     const { messageId } = await pRetry(

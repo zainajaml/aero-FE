@@ -15,6 +15,16 @@ type TicketRef = { id: string; projectId: string; title: string; code: string };
 export const ticketUrl = (ticketId: string) =>
   new URL(`/ticket/${ticketId}`, env.APP_URL).toString();
 
+const meta = (kind: string, actorId: string, actorName: string, ticket: TicketRef) => ({
+  kind,
+  actor_id: actorId,
+  actor_name: actorName,
+  project_id: ticket.projectId,
+  ticket_id: ticket.id,
+  ticket_code: ticket.code,
+  ticket_title: ticket.title,
+});
+
 function preview(text: string): string {
   return text.length > 300 ? `${text.slice(0, 300)}…` : text;
 }
@@ -56,7 +66,7 @@ export function notifyMentions(input: {
           ticketUrl: ticketUrl(input.ticket.id),
           commentPreview: preview(input.commentText),
         },
-        metadata: { ticket_id: input.ticket.id, kind: "mention", actor_id: input.actorId },
+        metadata: meta("mention", input.actorId, actorName, input.ticket),
       });
       if (result.status === "sent") sent += 1;
     }
@@ -77,18 +87,19 @@ export function notifyReply(input: {
     if (!allowed) return 0;
     const [recipient] = await repo.recipients(db, [allowed]);
     if (!recipient) return 0;
+    const actorName = await actorDisplayName(input.actorId);
     const result = await sendTemplateEmail({
       template: "comment-mention",
       to: recipient.email,
       data: {
         recipientName: displayName(recipient, ""),
-        actorName: await actorDisplayName(input.actorId),
+        actorName,
         ticketTitle: input.ticket.title || "a ticket",
         ticketUrl: ticketUrl(input.ticket.id),
         commentPreview: preview(input.commentText),
         replyToComment: true,
       },
-      metadata: { ticket_id: input.ticket.id, kind: "reply", actor_id: input.actorId },
+      metadata: meta("reply", input.actorId, actorName, input.ticket),
     });
     return result.status === "sent" ? 1 : 0;
   });
@@ -106,17 +117,18 @@ export function notifyAssignee(input: { actorId: string; ticket: TicketRef; assi
     if (!allowed) return 0;
     const [recipient] = await repo.recipients(db, [allowed]);
     if (!recipient) return 0;
+    const actorName = await actorDisplayName(input.actorId);
     const result = await sendTemplateEmail({
       template: "ticket-assignment",
       to: recipient.email,
       data: {
         recipientName: displayName(recipient, ""),
-        actorName: await actorDisplayName(input.actorId),
+        actorName,
         ticketTitle: input.ticket.title || "a ticket",
         ticketCode: input.ticket.code,
         ticketUrl: ticketUrl(input.ticket.id),
       },
-      metadata: { ticket_id: input.ticket.id, kind: "assignment", actor_id: input.actorId },
+      metadata: meta("assignment", input.actorId, actorName, input.ticket),
     });
     return result.status === "sent" ? 1 : 0;
   });
