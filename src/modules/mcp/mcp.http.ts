@@ -17,9 +17,10 @@ import { buildMcpServer } from "./mcp.server.js";
  */
 const JWKS_URL = `http://127.0.0.1:${env.PORT}/api/auth/jwks`;
 
-// Modern (2026-07-28) MCP only, one stateless server per request, plain JSON responses.
+// Modern (2026-07-28) MCP plus stateless 2025-era requests for clients that have not upgraded;
+// one server per request, plain JSON responses.
 const mcpHandler = createMcpHandler(({ authInfo }) => buildMcpServer(actorOf(authInfo)), {
-  legacy: "reject",
+  legacy: "stateless",
   responseMode: "json",
   onerror: (error) => logger.warn({ err: error }, "mcp request rejected"),
 });

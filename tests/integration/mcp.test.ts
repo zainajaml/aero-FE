@@ -255,7 +255,7 @@ describe("MCP authorization", () => {
     expect(callback.searchParams.get("state")).toBe("s1");
   });
 
-  it("rejects 2025-era (legacy) MCP requests", async () => {
+  it("still serves 2025-era (legacy) MCP clients statelessly", async () => {
     const w = await projectWorld();
     const token = await obtainAccessToken(w.developer);
     const response = await request(app)
@@ -272,8 +272,15 @@ describe("MCP authorization", () => {
           clientInfo: { name: "legacy", version: "1" },
         },
       });
-    expect(response.status).toBe(400);
-    expect(response.body.error.data.supported).toEqual(["2026-07-28"]);
+    expect(response.status).toBe(200);
+    // The 2025 transport answers as a single server-sent event.
+    const payload = JSON.parse(
+      response.text
+        .split("\n")
+        .find((l) => l.startsWith("data: "))!
+        .slice(6),
+    );
+    expect(payload.result.protocolVersion).toBe("2025-06-18");
   });
 
   it("refuses OAuth client administration to regular users", async () => {
