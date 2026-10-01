@@ -344,6 +344,13 @@
       "when": 1790855369886,
       "tag": "0048_add_email_send_delay",
       "breakpoints": true
+    },
+    {
+      "idx": 49,
+      "version": "7",
+      "when": 1790857003648,
+      "tag": "0049_fn_notify_access_changed",
+      "breakpoints": true
     }
   ]
 }

@@ -23,6 +23,7 @@ export type RouteContext<P, Q, B, A extends boolean> = {
 type ResponseSpec =
   | { status: 200 | 201; schema: z.ZodType; paginated?: false }
   | { status: 200; schema: z.ZodType; paginated: true }
+  | { status: 200; eventStream: string }
   | { status: 204 };
 
 export type RouteDefinition<P = unknown, Q = unknown, B = unknown, A extends boolean = true> = {
@@ -69,6 +70,7 @@ export function mountRoutes(router: Router, routes: AnyRoute[]): void {
         if (res.headersSent) return;
         const spec = route.response;
         if (spec.status === 204) res.status(204).end();
+        else if ("eventStream" in spec) return;
         else if (spec.paginated) {
           const page = result as { items: unknown[]; nextCursor?: string | null; total?: number };
           res.paginated(page.items, {
@@ -108,16 +110,21 @@ export function routesToOpenApiPaths(
     const success =
       spec.status === 204
         ? { description: "No content" }
-        : {
-            description: "Success",
-            content: {
-              "application/json": {
-                schema: spec.paginated
-                  ? paginatedEnvelope(spec.schema)
-                  : successEnvelope(spec.schema),
+        : "eventStream" in spec
+          ? {
+              description: spec.eventStream,
+              content: { "text/event-stream": { schema: z.string() } },
+            }
+          : {
+              description: "Success",
+              content: {
+                "application/json": {
+                  schema: spec.paginated
+                    ? paginatedEnvelope(spec.schema)
+                    : successEnvelope(spec.schema),
+                },
               },
-            },
-          };
+            };
     const errorStatuses = new Set([
       400,
       500,

@@ -130,16 +130,14 @@ export async function inheritRateCard(
     .limit(1);
   if (!source) return;
   const rows = await db.select().from(rateCard).where(eq(rateCard.projectId, source.projectId));
-  await db
-    .insert(rateCard)
-    .values(
-      rows.map((row) => ({
-        projectId,
-        role: row.role,
-        location: row.location,
-        hourlyRate: row.hourlyRate,
-      })),
-    );
+  await db.insert(rateCard).values(
+    rows.map((row) => ({
+      projectId,
+      role: row.role,
+      location: row.location,
+      hourlyRate: row.hourlyRate,
+    })),
+  );
 }
 
 export type ProjectStats = {

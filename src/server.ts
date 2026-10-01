@@ -1,6 +1,7 @@
 import { createApp } from "./app.js";
 import { env } from "./config/env.js";
 import { closeDatabase } from "./database/client.js";
+import { accessEvents } from "./modules/access/access-events.js";
 import { logger } from "./shared/observability/logger.js";
 
 const server = createApp().listen(env.PORT, () => {
@@ -12,8 +13,9 @@ function shutdown(signal: string) {
   if (shuttingDown) return;
   shuttingDown = true;
   logger.info({ signal }, "shutting down");
+  server.closeAllConnections();
   server.close(() => {
-    closeDatabase()
+    Promise.all([accessEvents.close(), closeDatabase()])
       .catch((error: unknown) => logger.error({ err: error }, "database close failed"))
       .finally(() => process.exit(0));
   });
