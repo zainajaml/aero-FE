@@ -31,10 +31,11 @@ type NameParts = {
   fullName?: string | null;
   firstName?: string | null;
   lastName?: string | null;
+  email?: string | null;
 } | null;
 
-/** "First Last", else full name, else the fallback (ports formatDisplayName). */
+/** "First Last", else full name, else email local part, else the fallback (ports formatDisplayName). */
 export function displayName(profile: NameParts, fallback: string): string {
   const joined = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim();
-  return joined || profile?.fullName?.trim() || fallback;
+  return joined || profile?.fullName?.trim() || profile?.email?.split("@")[0] || fallback;
 }

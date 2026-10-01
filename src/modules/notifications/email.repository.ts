@@ -37,3 +37,11 @@ export async function updateEmailLog(
 ): Promise<void> {
   await db.update(emailSendLog).set(patch).where(eq(emailSendLog.id, id));
 }
+
+export async function providerSendDelayMs(db: DbExecutor): Promise<number> {
+  const [row] = await db
+    .select({ delay: emailSendState.sendDelayMs })
+    .from(emailSendState)
+    .where(eq(emailSendState.id, 1));
+  return row?.delay ?? 0;
+}

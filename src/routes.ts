@@ -12,6 +12,7 @@ import { onboardingRoutes } from "./modules/onboarding/onboarding.routes.js";
 import { projectRoutes } from "./modules/projects/projects.routes.js";
 import { reportingRoutes } from "./modules/reporting/reporting.routes.js";
 import { sprintRoutes } from "./modules/sprints/sprints.routes.js";
+import { supportRoutes } from "./modules/support/support.routes.js";
 import { ticketRoutes } from "./modules/tickets/tickets.routes.js";
 import { peopleRoutes } from "./modules/users/people.routes.js";
 import { profileRoutes } from "./modules/users/profile.routes.js";
@@ -34,4 +35,5 @@ export const apiRoutes: AnyRoute[] = [
   ...billingRoutes,
   ...reportingRoutes,
   ...documentRoutes,
+  ...supportRoutes,
 ];

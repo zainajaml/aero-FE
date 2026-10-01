@@ -31,7 +31,8 @@ async function canRead(actor: Actor, area: StorageArea, key: string): Promise<bo
     case "avatars":
       return scope === actor.userId || (await sharesProject(db, actor.userId, scope));
     case "support":
-      return scope === actor.userId;
+      // Keys are `<issueId>/…`: the ticket owner (super admins returned above).
+      return repo.isSupportIssueOwner(db, scope, actor.userId);
     case "attachments": {
       const projectId = await repo.projectOfAttachmentKey(db, key);
       return projectId !== null && (await isMemberOf(actor, projectId));
@@ -40,6 +41,7 @@ async function canRead(actor: Actor, area: StorageArea, key: string): Promise<bo
       return isMemberOf(actor, scope);
     case "document-images": {
       if (scope === actor.userId || (await sharesProject(db, actor.userId, scope))) return true;
+      if (await repo.referencedInOwnSupportThread(db, key, actor.userId)) return true;
       for (const projectId of await repo.projectsReferencingDocumentFile(db, key)) {
         if (await isMemberOf(actor, projectId)) return true;
       }
