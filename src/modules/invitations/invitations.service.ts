@@ -355,7 +355,9 @@ export async function lookupInvitation(token: string, sourceKey: string) {
     alreadyAccepted: invitation.acceptedAt !== null,
     email: invitation.email,
     roleLabel: roleLabel(invitation.role),
-    userExists: (await repo.findUserIdByEmail(db, invitation.email)) !== null,
+    userExists:
+      (await repo.findUserIdByEmail(db, invitation.email)) !== null &&
+      (await repo.findClaimableIdentity(db, invitation.email)) === null,
     ...(await landingContext(invitation)),
   };
 }
@@ -386,7 +388,8 @@ export async function acceptWithPassword(
   }
   if (invitation.expiresAt <= new Date())
     throw new ValidationError("This invitation has expired. Ask an admin to resend it.");
-  if (await repo.findUserIdByEmail(db, invitation.email)) {
+  const claimable = await repo.findClaimableIdentity(db, invitation.email);
+  if (!claimable && (await repo.findUserIdByEmail(db, invitation.email))) {
     throw new ConflictError(
       "An account already exists for this email. Please sign in instead.",
       "ACCOUNT_EXISTS",
@@ -399,11 +402,14 @@ export async function acceptWithPassword(
     [firstName, lastName].filter(Boolean).join(" ") || displayNameFromEmail(invitation.email);
   const ctx = await auth.$context;
   const passwordHash = await ctx.password.hash(input.password);
-  // Created unverified so the registration hook does not apply a different invitation first.
-  const user = await ctx.internalAdapter.createUser(
-    { email: invitation.email, name: fullName, emailVerified: false },
-    { method: "email-password" },
-  );
+  // New identities are created unverified so the registration hook does not apply a different
+  // invitation first; a provisional (Jira-imported) identity is claimed instead of duplicated.
+  const user = claimable
+    ? { id: claimable }
+    : await ctx.internalAdapter.createUser(
+        { email: invitation.email, name: fullName, emailVerified: false },
+        { method: "email-password" },
+      );
   await ctx.internalAdapter.linkAccount({
     userId: user.id,
     providerId: "credential",
@@ -413,7 +419,7 @@ export async function acceptWithPassword(
 
   await db.transaction(async (tx) => {
     await grantInvitation(tx, user.id, invitation);
-    await updateProfile(tx, user.id, { firstName, lastName, fullName });
+    await updateProfile(tx, user.id, { firstName, lastName, fullName, isProvisional: false });
     // Possession of the emailed token proves the address.
     await tx.update(users).set({ emailVerified: true }).where(eq(users.id, user.id));
   });

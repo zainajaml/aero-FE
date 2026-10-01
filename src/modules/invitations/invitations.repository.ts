@@ -3,6 +3,7 @@ import type { DbExecutor } from "../../database/client.js";
 import {
   accountAdmins,
   invitations,
+  authAccounts,
   profiles,
   projectMembers,
   projects,
@@ -251,4 +252,24 @@ export async function seatedMembers(db: DbExecutor, projectIds: string[], exclud
         sql`not exists (select 1 from ${userRoles} ur where ur.user_id = ${projectMembers.userId} and ur.role = 'super_admin')`,
       ),
     );
+}
+
+/**
+ * A provisional identity (created by a Jira import) that has never signed in: no credential or
+ * social account yet. Its invitation may give it a password while keeping its imported history.
+ */
+export async function findClaimableIdentity(db: DbExecutor, email: string): Promise<string | null> {
+  const [row] = await db
+    .select({ id: users.id })
+    .from(users)
+    .innerJoin(profiles, eq(profiles.id, users.id))
+    .where(
+      and(
+        sql`lower(${users.email}) = lower(${email})`,
+        eq(profiles.isProvisional, true),
+        sql`not exists (select 1 from ${authAccounts} a where a.user_id = ${users.id})`,
+      ),
+    )
+    .limit(1);
+  return row?.id ?? null;
 }

@@ -330,3 +330,47 @@ describe("signed-in accept, resend and revoke", () => {
     ).toBe(false);
   });
 });
+
+describe("provisional identities from imports", () => {
+  it("lets an imported person claim their identity through the invitation", async () => {
+    const { project, admin } = await (async () => {
+      const { createAccount, createProject, makeAccountAdmin } =
+        await import("../support/actors.js");
+      const account = await createAccount();
+      const p = await createProject(account.id);
+      const a = await createActor();
+      await makeAccountAdmin(account.id, a.id);
+      return { project: p, admin: a };
+    })();
+    const { users: usersTable, profiles: profilesTable } =
+      await import("../../src/database/schema/index.js");
+    const [ghost] = await db
+      .insert(usersTable)
+      .values({ name: "Imported Person", email: "imported@example.com" })
+      .returning();
+    await db
+      .insert(profilesTable)
+      .values({
+        id: ghost!.id,
+        email: "imported@example.com",
+        fullName: "Imported Person",
+        isProvisional: true,
+      });
+    await invite(admin.agent, {
+      email: "imported@example.com",
+      role: "developer",
+      projectIds: [project.id],
+    });
+    const token = tokenFromLastEmail();
+    expect(
+      (await request(app).post("/api/v1/invitations/lookup").send({ token })).body.data.userExists,
+    ).toBe(false);
+    const accepted = await request(app)
+      .post("/api/v1/invitations/accept-with-password")
+      .send({ token, password: "claimed-password-1" });
+    expect(accepted.status).toBe(201);
+    const agent = request.agent(app);
+    await signIn(agent, "imported@example.com", "claimed-password-1");
+    expect((await agent.get("/api/v1/me")).body.data.id).toBe(ghost!.id);
+  });
+});
