@@ -23,6 +23,10 @@ export const PASSWORD = "correct-horse-battery-staple";
 
 export const outbox = () => (emailTransport as MemoryEmailTransport).sent;
 
+/** Messages to `email` other than the sign-up verification email. */
+export const mailFor = (email: string) =>
+  outbox().filter((m) => m.to === email && m.subject !== "Confirm your email");
+
 let counter = 0;
 const unique = () => `${Date.now().toString(36)}${(counter += 1)}`;
 

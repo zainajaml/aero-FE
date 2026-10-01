@@ -21,17 +21,14 @@ const PNG = Buffer.from(
 describe("self-service profile", () => {
   it("edits names and timezone but nothing an admin owns", async () => {
     const actor = await createActor();
-    const response = await actor.agent
-      .patch("/api/v1/me/profile")
-      .set("Origin", APP_ORIGIN)
-      .send({
-        firstName: " Ada ",
-        lastName: "Lovelace",
-        timezone: "IST",
-        archivedAt: null,
-        email: "x@evil.test",
-        jobTitle: "CEO",
-      });
+    const response = await actor.agent.patch("/api/v1/me/profile").set("Origin", APP_ORIGIN).send({
+      firstName: " Ada ",
+      lastName: "Lovelace",
+      timezone: "IST",
+      archivedAt: null,
+      email: "x@evil.test",
+      jobTitle: "CEO",
+    });
     expect(response.status).toBe(200);
     expect(response.body.data).toMatchObject({
       firstName: "Ada",

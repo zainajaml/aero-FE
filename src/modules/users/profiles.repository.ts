@@ -28,3 +28,16 @@ export async function updateProfile(
 ): Promise<void> {
   await db.update(profiles).set(patch).where(eq(profiles.id, userId));
 }
+
+export async function profileName(db: DbExecutor, userId: string) {
+  const [row] = await db
+    .select({
+      fullName: profiles.fullName,
+      firstName: profiles.firstName,
+      lastName: profiles.lastName,
+    })
+    .from(profiles)
+    .where(eq(profiles.id, userId))
+    .limit(1);
+  return row ?? null;
+}

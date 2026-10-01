@@ -2,7 +2,7 @@ import { env } from "../../config/env.js";
 import { db } from "../../database/client.js";
 import { sendTemplateEmail } from "../notifications/email.service.js";
 import { displayName, roleLabel } from "../users/names.js";
-import { profileName } from "./invitations.repository.js";
+import { profileName } from "../users/profiles.repository.js";
 
 /** Sends the team invite email; returns whether it was handed to the provider. */
 export async function sendInviteEmail(input: {

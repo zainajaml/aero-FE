@@ -252,16 +252,3 @@ export async function seatedMembers(db: DbExecutor, projectIds: string[], exclud
       ),
     );
 }
-
-export async function profileName(db: DbExecutor, userId: string) {
-  const [row] = await db
-    .select({
-      fullName: profiles.fullName,
-      firstName: profiles.firstName,
-      lastName: profiles.lastName,
-    })
-    .from(profiles)
-    .where(eq(profiles.id, userId))
-    .limit(1);
-  return row ?? null;
-}
