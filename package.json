@@ -26,11 +26,13 @@
     "bootstrap:super-admin": "tsx --env-file=.env scripts/bootstrap-super-admin.ts"
   },
   "dependencies": {
+    "@ai-sdk/google": "^4.0.87",
     "@aws-sdk/client-s3": "^3.1144.0",
     "@aws-sdk/s3-request-presigner": "^3.1144.0",
     "@better-auth/drizzle-adapter": "1.7",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.1.0",
+    "ai": "^7.0.126",
     "better-auth": "1.7",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",

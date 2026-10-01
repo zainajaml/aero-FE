@@ -9,6 +9,7 @@ import { invitationRoutes } from "./modules/invitations/invitations.routes.js";
 import { notificationRoutes } from "./modules/notifications/notifications.routes.js";
 import { onboardingRoutes } from "./modules/onboarding/onboarding.routes.js";
 import { projectRoutes } from "./modules/projects/projects.routes.js";
+import { reportingRoutes } from "./modules/reporting/reporting.routes.js";
 import { sprintRoutes } from "./modules/sprints/sprints.routes.js";
 import { ticketRoutes } from "./modules/tickets/tickets.routes.js";
 import { peopleRoutes } from "./modules/users/people.routes.js";
@@ -30,4 +31,5 @@ export const apiRoutes: AnyRoute[] = [
   ...epicRoutes,
   ...ticketRoutes,
   ...billingRoutes,
+  ...reportingRoutes,
 ];

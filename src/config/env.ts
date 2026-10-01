@@ -56,6 +56,9 @@ const schema = z
     BILLING_API_KEY: optionalString,
     BILLING_TENANT_ID: optionalString,
 
+    GOOGLE_GENERATIVE_AI_API_KEY: optionalString,
+    AI_SUMMARY_MODEL: z.string().min(1).default("gemini-3-flash-preview"),
+
     JIRA_CLIENT_ID: optionalString,
     JIRA_CLIENT_SECRET: optionalString,
     JIRA_REDIRECT_URI: z.url().optional(),
@@ -76,12 +79,25 @@ const schema = z
         message: "BILLING_API_URL and BILLING_TENANT_ID are required with BILLING_API_KEY",
       });
     }
-    const jira = [env.JIRA_CLIENT_ID, env.JIRA_CLIENT_SECRET, env.JIRA_REDIRECT_URI, env.JIRA_TOKEN_ENCRYPTION_KEY];
+    const jira = [
+      env.JIRA_CLIENT_ID,
+      env.JIRA_CLIENT_SECRET,
+      env.JIRA_REDIRECT_URI,
+      env.JIRA_TOKEN_ENCRYPTION_KEY,
+    ];
     if (jira.some(Boolean) && !jira.every(Boolean)) {
-      ctx.addIssue({ code: "custom", path: ["JIRA_CLIENT_ID"], message: "Set all JIRA_* variables or none" });
+      ctx.addIssue({
+        code: "custom",
+        path: ["JIRA_CLIENT_ID"],
+        message: "Set all JIRA_* variables or none",
+      });
     }
     if (env.JIRA_TOKEN_ENCRYPTION_KEY && env.JIRA_TOKEN_ENCRYPTION_KEY.length < 32) {
-      ctx.addIssue({ code: "custom", path: ["JIRA_TOKEN_ENCRYPTION_KEY"], message: "Must be at least 32 characters" });
+      ctx.addIssue({
+        code: "custom",
+        path: ["JIRA_TOKEN_ENCRYPTION_KEY"],
+        message: "Must be at least 32 characters",
+      });
     }
     if (env.NODE_ENV === "production" && KNOWN_WEAK_SECRETS.has(env.AUTH_SECRET.toLowerCase())) {
       ctx.addIssue({
