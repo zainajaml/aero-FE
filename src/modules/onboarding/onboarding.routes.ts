@@ -1,11 +1,10 @@
 import { z } from "zod";
-import { PROJECT_TYPES } from "../../database/schema/projects.js";
 import { defineRoute } from "../../shared/http/route.js";
 import { appRoleSchema } from "../access/me.schemas.js";
+import { projectTypeSchema as projectType } from "../projects/projects.schemas.js";
 import * as service from "./onboarding.service.js";
 
 const tags = ["onboarding"];
-const projectType = z.enum(PROJECT_TYPES).meta({ id: "ProjectType" });
 const personName = z.string().trim().max(80).nullish();
 
 const onboardingState = z

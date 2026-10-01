@@ -168,15 +168,13 @@ describe("POST /invitations", () => {
     // Seed nine pending invitations and one member (the per-admin rate limit is 10/min).
     for (let i = 0; i < 9; i += 1) {
       const { tokenHash, expiresAt } = newInvitationToken();
-      await db
-        .insert(invitations)
-        .values({
-          email: `seat${i}@example.com`,
-          role: "viewer",
-          projectIds: [project.id],
-          tokenHash,
-          expiresAt,
-        });
+      await db.insert(invitations).values({
+        email: `seat${i}@example.com`,
+        role: "viewer",
+        projectIds: [project.id],
+        tokenHash,
+        expiresAt,
+      });
     }
     await addMember(project.id, (await createActor()).id, "developer");
     const full = await invite(projectAdmin.agent, {
