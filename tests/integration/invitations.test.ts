@@ -348,14 +348,12 @@ describe("provisional identities from imports", () => {
       .insert(usersTable)
       .values({ name: "Imported Person", email: "imported@example.com" })
       .returning();
-    await db
-      .insert(profilesTable)
-      .values({
-        id: ghost!.id,
-        email: "imported@example.com",
-        fullName: "Imported Person",
-        isProvisional: true,
-      });
+    await db.insert(profilesTable).values({
+      id: ghost!.id,
+      email: "imported@example.com",
+      fullName: "Imported Person",
+      isProvisional: true,
+    });
     await invite(admin.agent, {
       email: "imported@example.com",
       role: "developer",

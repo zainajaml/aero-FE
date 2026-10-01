@@ -44,7 +44,8 @@ export function testEnv(databaseUrl: string, s3Endpoint = storageEndpoint): Reco
     LOG_LEVEL: "silent",
     DATABASE_URL: databaseUrl,
     APP_URL: "http://app.test",
-    API_URL: "http://api.test",
+    // HTTPS: the MCP resource identifier (API_URL/mcp) must be HTTPS unless it is loopback.
+    API_URL: "https://api.test",
     AUTH_SECRET: "test-only-auth-secret-0123456789abcdefghijklmnop",
     SMTP_URL: "memory://",
     EMAIL_FROM: "Space Scope <noreply@test.local>",
