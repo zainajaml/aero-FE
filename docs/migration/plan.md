@@ -5,13 +5,12 @@ Migration progress:
 - [x] 1. Discover (docs/migration/discovery.md)
 - [x] 2. Target stack and scope confirmed: React + Express, fresh start
 - [x] 3. Architecture, trees, ledger and plan presented (docs/migration/architecture.md)
-- [~] 4. Foundations — backend: config, DB + migrations, auth, errors, health, OpenAPI, tests  ✅
-                       frontend: pending
-- [ ] 5. Vertical features (ledger.md)
-- [ ] 6. Deployment rehearsal (data/identity/file import NOT APPLICABLE — fresh start)
-- [ ] 7. Verification gates
-- [ ] 8. Runtime API acceptance on an isolated test DB
-- [ ] 9. Final report (report.md)
+- [x] 4. Foundations: both repositories (config, DB + migrations, auth, errors, health, OpenAPI, API client)
+- [x] 5. Vertical features: ledger.md (29 verified; Google sign-in blocked on credentials; bounce webhook deferred)
+- [x] 6. Deployment rehearsal: production images, compose stack, smoke-prod.sh (data/identity/file import NOT APPLICABLE: fresh start)
+- [x] 7. Verification gates (verification.md)
+- [x] 8. Runtime API acceptance on an isolated test DB (api-coverage.md: 146/146 success and failure)
+- [x] 9. Final report (report.md)
 ```
 
 ## Sequence
@@ -46,3 +45,6 @@ The Lovable application stays live and unchanged until the new stack passes ever
 | 2026-10-01 | Email sent synchronously with bounded retry and logged with rendered HTML                                | Matches source behavior; enables real admin retry (source retry was broken) |
 | 2026-10-01 | MinIO image unavailable; storage service chosen in the files slice                                       | `minio/minio` no longer pullable                                            |
 | 2026-10-01 | Better Auth sign-in response includes session token in JSON body (library behavior)                      | Accepted; cookie is HttpOnly; tracked as known exposure                     |
+| 2026-10-01 | MCP endpoint accepts 2025-era clients statelessly as well as 2026-07-28                                  | Rejecting older clients would break MCP connectors that have not upgraded   |
+| 2026-10-02 | Expired rate-limit windows, verifications and OAuth tokens purged hourly in-process                      | Replaces the source's opportunistic purge; no job queue needed              |
+| 2026-10-02 | pg-boss removed; Jira import runs as client-driven steps                                                 | No background job needs a queue; fewer moving parts                         |
