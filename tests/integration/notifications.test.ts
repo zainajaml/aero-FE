@@ -12,6 +12,30 @@ beforeEach(async () => {
 });
 
 describe("notification log", () => {
+  it("lists invitations under the projects they grant", async () => {
+    const w = await projectWorld();
+    const invited = await call(w.manager, "post", "/invitations", {
+      email: "new-hire@example.com",
+      role: "developer",
+      projectIds: [w.project.id],
+      accountIds: [],
+      jobTitle: null,
+    });
+    expect(invited.status).toBe(201);
+    const filtered = (
+      await call(w.manager, "get", `/notifications?projectId=${w.project.id}&page=1&pageSize=50`)
+    ).body.data;
+    expect(filtered.items).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ templateName: "invite", projectId: w.project.id }),
+      ]),
+    );
+    const otherProject = (
+      await call(w.outsider, "get", `/notifications?projectId=${w.project.id}&page=1&pageSize=50`)
+    ).body.data;
+    expect(otherProject.items).toHaveLength(0);
+  });
+
   it("shows people their own mail, admins their projects' mail, and hides self-triggered mail", async () => {
     const w = await projectWorld();
     await newTicket(w.developer, w.project.id, { assigneeId: w.teammate.id });

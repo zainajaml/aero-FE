@@ -76,6 +76,7 @@ export async function inviteImportedUsers(actor: Actor, importId: string, emails
           invitation,
           token,
           projectName: project?.name ?? null,
+          projectIds: invitationProjectIds(invitation),
         }));
       if (ok) sent += 1;
       else failed.push(email);

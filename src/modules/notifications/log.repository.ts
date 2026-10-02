@@ -10,6 +10,15 @@ export type LogVisibility =
 
 const FAILED = ["failed", "bounced", "complained"];
 
+/** Rows about any of `projectIds`: single-project emails log `project_id`, invitations log `project_ids`. */
+function aboutProjects(projectIds: string[]): SQL {
+  const ids = sql`array[${sql.join(
+    projectIds.map((id) => sql`${id}`),
+    sql`, `,
+  )}]::text[]`;
+  return sql`(${emailSendLog.metadata}->>'project_id' = any(${ids}) or jsonb_exists_any(coalesce(${emailSendLog.metadata}->'project_ids', '[]'::jsonb), ${ids}))`;
+}
+
 function visibilityCondition(v: LogVisibility): SQL | undefined {
   if ("all" in v) return undefined;
   const own = sql`lower(${emailSendLog.recipientEmail}) = lower(${v.email})`;
@@ -18,12 +27,7 @@ function visibilityCondition(v: LogVisibility): SQL | undefined {
     : own;
   const scoped: SQL[] = [ownNotSelf];
   if (v.projectIds.length > 0) {
-    scoped.push(
-      sql`${emailSendLog.metadata}->>'project_id' in (${sql.join(
-        v.projectIds.map((id) => sql`${id}`),
-        sql`, `,
-      )})`,
-    );
+    scoped.push(aboutProjects(v.projectIds));
     scoped.push(
       and(
         eq(emailSendLog.templateName, "invite"),
@@ -46,7 +50,7 @@ export type LogQuery = {
 
 function where(q: LogQuery): SQL | undefined {
   const conditions: (SQL | undefined)[] = [visibilityCondition(q.visibility)];
-  if (q.projectId) conditions.push(sql`${emailSendLog.metadata}->>'project_id' = ${q.projectId}`);
+  if (q.projectId) conditions.push(aboutProjects([q.projectId]));
   if (q.failedOnly) conditions.push(inArray(emailSendLog.status, FAILED));
   if (q.since) conditions.push(gt(emailSendLog.createdAt, q.since));
   if (q.search) {

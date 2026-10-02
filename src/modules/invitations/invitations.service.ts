@@ -220,6 +220,7 @@ export async function createInvitation(actor: Actor, input: CreateInvitationInpu
     invitation,
     token,
     projectName,
+    projectIds: invitationProjectIds(invitation),
   });
   await writeAuditEvent({
     actorUserId: actor.userId,
@@ -273,6 +274,7 @@ export async function resendInvitation(actor: Actor, invitationId: string) {
     invitation: refreshed,
     token,
     projectName,
+    projectIds: invitationProjectIds(refreshed),
   });
   await writeAuditEvent({
     actorUserId: actor.userId,

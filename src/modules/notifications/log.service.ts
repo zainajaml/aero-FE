@@ -42,7 +42,12 @@ const toRow = (row: Awaited<ReturnType<typeof repo.listLog>>["rows"][number]) =>
     createdAt: row.createdAt.toISOString(),
     kind: text("kind"),
     author: text("actor_name"),
-    projectId: text("project_id"),
+    // Invitations can cover several projects; they report the first one.
+    projectId:
+      text("project_id") ??
+      (Array.isArray(meta["project_ids"]) && typeof meta["project_ids"][0] === "string"
+        ? meta["project_ids"][0]
+        : null),
     ticketId: text("ticket_id"),
     ticketCode: text("ticket_code"),
     ticketTitle: text("ticket_title"),

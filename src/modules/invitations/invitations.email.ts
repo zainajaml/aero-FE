@@ -10,7 +10,7 @@ export async function sendInviteEmail(input: {
   invitation: { id: string; email: string; role: string };
   token: string;
   projectName: string | null;
-  projectIds?: string[];
+  projectIds: string[];
 }): Promise<boolean> {
   const actorName = displayName(await profileName(db, input.actorUserId), "Someone");
   const inviteUrl = `${env.APP_URL}/accept?token=${encodeURIComponent(input.token)}`;
@@ -29,7 +29,7 @@ export async function sendInviteEmail(input: {
       invitation_id: input.invitation.id,
       actor_id: input.actorUserId,
       actor_name: actorName,
-      project_ids: input.projectIds ?? [],
+      project_ids: input.projectIds,
     },
   });
   return result.status === "sent";
