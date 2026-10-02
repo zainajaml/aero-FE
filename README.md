@@ -18,18 +18,21 @@ Emails are captured by Mailpit at http://localhost:8026.
 
 ## Checks
 
-| Command                                                       | Purpose                                                                                           |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `npm test`                                                    | Unit + integration tests against a throwaway Testcontainers PostgreSQL built from every migration |
-| `npm run typecheck` / `npm run lint` / `npm run format:check` | Static checks                                                                                     |
-| `npm run deps:cycles`                                         | Fails on circular imports                                                                         |
-| `npm run deps:unused`                                         | Unused files, exports and dependencies (knip)                                                     |
-| `npm run db:check`                                            | Fails when the Drizzle schema and migrations drift                                                |
-| `npm run openapi:generate`                                    | Regenerates `openapi/openapi.json`                                                                |
+| Command                                                       | Purpose                                                                                                                           |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `npm test`                                                    | Unit + integration tests against a throwaway Testcontainers PostgreSQL built from every migration                                 |
+| `npm run typecheck` / `npm run lint` / `npm run format:check` | Static checks                                                                                                                     |
+| `npm run deps:cycles`                                         | Fails on circular imports                                                                                                         |
+| `npm run deps:unused`                                         | Unused files, exports and dependencies (knip)                                                                                     |
+| `npm run db:check`                                            | Fails when the Drizzle schema and migrations drift                                                                                |
+| `npm run openapi:generate`                                    | Regenerates `openapi/openapi.json`                                                                                                |
+| `npm run test:api-coverage`                                   | Runs the suite and fails unless every OpenAPI operation has a passing success and failure case (`docs/migration/api-coverage.md`) |
+| `npm run smoke:prod`                                          | Builds, migrates a throwaway database and checks `dist/server.js` with `NODE_ENV=production` over HTTP                            |
 
 ## Layout
 
 - `src/modules/<module>` — feature modules (routes → service → repository, plus policy and schemas).
 - `src/shared` — HTTP envelope, errors, validation, security middleware, logging.
 - `src/database` — Drizzle schema (one file per table), migrations (single authority), client, migrator.
-- `docs/migration` — migration evidence: discovery, architecture, plan, ledger, schema coverage.
+- `docs/migration` — migration evidence: discovery, architecture, plan, ledger, schema coverage,
+  API coverage and verification results.

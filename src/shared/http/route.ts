@@ -11,7 +11,7 @@ type AnyObject = z.ZodObject<z.ZodRawShape>;
 
 type Infer<T> = T extends z.ZodType ? z.infer<T> : undefined;
 
-export type RouteContext<P, Q, B, A extends boolean> = {
+type RouteContext<P, Q, B, A extends boolean> = {
   req: Request;
   res: Response;
   params: Infer<P>;

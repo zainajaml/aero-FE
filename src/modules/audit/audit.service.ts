@@ -3,10 +3,10 @@ import { db } from "../../database/client.js";
 import { auditLogs } from "../../database/schema/index.js";
 import { logger } from "../../shared/observability/logger.js";
 
-export type AuditAction = "create" | "read" | "update" | "delete";
+type AuditAction = "create" | "read" | "update" | "delete";
 
 /** Actor used when an operation is genuinely system initiated. */
-export const SYSTEM_ACTOR_ID = "00000000-0000-0000-0000-000000000000";
+const SYSTEM_ACTOR_ID = "00000000-0000-0000-0000-000000000000";
 
 export type AuditEvent = {
   actorUserId: string | null;
@@ -39,7 +39,7 @@ function scalar(value: unknown): string | null {
 }
 
 /** Drops secret-looking keys and reduces values to short scalars. */
-export function sanitizeMetadata(metadata: Record<string, unknown>): string[] {
+function sanitizeMetadata(metadata: Record<string, unknown>): string[] {
   return Object.entries(metadata).flatMap(([key, raw]) => {
     if (SECRET_KEY.test(key)) return [];
     const value = scalar(raw);

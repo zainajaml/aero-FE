@@ -4,8 +4,8 @@ import { logger } from "../../shared/observability/logger.js";
 // Atlassian Cloud OAuth 2.0 (3LO) and Jira REST client. Endpoints are fixed constants (tests
 // replace `fetch`, not these values). Response bodies are never logged: they can carry PII.
 
-export const ATLASSIAN_AUTH_BASE = "https://auth.atlassian.com";
-export const ATLASSIAN_API_BASE = "https://api.atlassian.com";
+const ATLASSIAN_AUTH_BASE = "https://auth.atlassian.com";
+const ATLASSIAN_API_BASE = "https://api.atlassian.com";
 
 /** "read:jira-user" lets imports read Jira user emails to match authors automatically. */
 export const JIRA_SCOPES = "read:jira-work read:jira-user offline_access";
@@ -220,7 +220,7 @@ export function resolveAttachmentUrl(cloudId: string, contentUrl: string): URL {
   throw new ForeignHostError();
 }
 
-export class AttachmentTooLargeError extends Error {
+class AttachmentTooLargeError extends Error {
   constructor() {
     super("Attachment exceeds the import size limit");
     this.name = "AttachmentTooLargeError";

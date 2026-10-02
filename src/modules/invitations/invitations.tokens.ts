@@ -1,6 +1,6 @@
 import { createHash, randomBytes } from "node:crypto";
 
-export const INVITE_TTL_DAYS = 7;
+const INVITE_TTL_DAYS = 7;
 
 /** 64 hex chars of randomness; only the hash is stored. */
 export function newInvitationToken(): { token: string; tokenHash: string; expiresAt: Date } {

@@ -1,6 +1,6 @@
 import type { RequestHandler, Response } from "express";
 
-export type PageMeta = { nextCursor?: string | null; total?: number };
+type PageMeta = { nextCursor?: string | null; total?: number };
 
 declare module "express-serve-static-core" {
   interface Response {

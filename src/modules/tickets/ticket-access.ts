@@ -9,11 +9,7 @@ import type { Actor, ProjectScope } from "../access/access.types.js";
 export type TicketRow = typeof tickets.$inferSelect;
 export type TicketContext = { ticket: TicketRow; scope: ProjectScope; sprintStatus: string | null };
 
-/** Done columns: flagged `is_done`, or named done/complete/completed (source rule). */
-export const isDoneColumn = (column: { isDone: boolean; name: string }) =>
-  column.isDone || ["done", "complete", "completed"].includes(column.name.trim().toLowerCase());
-
-export async function loadTicket(
+async function loadTicket(
   executor: DbExecutor,
   ticketId: string,
 ): Promise<{ ticket: TicketRow; sprintStatus: string | null } | null> {

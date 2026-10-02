@@ -20,7 +20,7 @@ const SYSTEM_PROMPT =
   'Respond with ONLY a JSON object of the shape {"issue":[],"solution":[],"nextSteps":[]} and no other text.';
 
 /** Lenient parse of the model's JSON (code fences, next_steps alias); falls back to empty lists. */
-export function parseSummary(text: string): CommentSummary {
+function parseSummary(text: string): CommentSummary {
   const cleaned = text
     .replace(/```json\s*/gi, "")
     .replace(/```/g, "")

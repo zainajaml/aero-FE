@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 const hourMinutes = (max: number) => z.number().int().min(1).max(max);
-export const ticketType = z.string().trim().min(1).max(40);
-export const ticketPriority = z.string().trim().min(1).max(40);
+const ticketType = z.string().trim().min(1).max(40);
+const ticketPriority = z.string().trim().min(1).max(40);
 const isoDate = z.iso.date();
 
 export const ticketSummarySchema = z

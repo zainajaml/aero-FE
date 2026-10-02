@@ -15,9 +15,7 @@
       "get": {
         "operationId": "getMyAccess",
         "summary": "Roles, memberships and the app-gate status for the signed-in user",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -39,10 +37,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -95,9 +90,7 @@
       "get": {
         "operationId": "streamMyAccessEvents",
         "summary": "Server-sent events: `changed` whenever the caller's roles or memberships change",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -152,9 +145,7 @@
       "get": {
         "operationId": "getMe",
         "summary": "The signed-in user's identity and profile",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -176,10 +167,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -242,9 +230,7 @@
       "patch": {
         "operationId": "updateMyProfile",
         "summary": "Edit your own name and timezone",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -275,10 +261,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -321,9 +304,7 @@
       "put": {
         "operationId": "replaceMyAvatar",
         "summary": "Upload a new profile picture (PNG/JPEG/GIF/WebP, max 5 MB)",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -342,9 +323,7 @@
                     "format": "binary"
                   }
                 },
-                "required": [
-                  "file"
-                ]
+                "required": ["file"]
               }
             }
           }
@@ -364,10 +343,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -410,9 +386,7 @@
       "get": {
         "operationId": "getMyPrivateProfile",
         "summary": "Your private HR details",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -434,10 +408,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -478,9 +449,7 @@
       "patch": {
         "operationId": "updateMyPrivateProfile",
         "summary": "Edit your private HR details",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -511,10 +480,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -557,9 +523,7 @@
       "get": {
         "operationId": "listMyTimeOff",
         "summary": "Your time off entries",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -584,10 +548,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -628,9 +589,7 @@
       "post": {
         "operationId": "addMyTimeOff",
         "summary": "Record time off",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -661,10 +620,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -707,9 +663,7 @@
       "delete": {
         "operationId": "deleteMyTimeOff",
         "summary": "Remove one of your time off entries",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -778,9 +732,7 @@
       "post": {
         "operationId": "createInvitation",
         "summary": "Invite a person to projects or accounts (admins only)",
-        "tags": [
-          "invitations"
-        ],
+        "tags": ["invitations"],
         "security": [
           {
             "sessionCookie": []
@@ -811,10 +763,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -897,9 +846,7 @@
       "post": {
         "operationId": "resendInvitation",
         "summary": "Issue a fresh link for a pending invitation and email it again",
-        "tags": [
-          "invitations"
-        ],
+        "tags": ["invitations"],
         "security": [
           {
             "sessionCookie": []
@@ -932,10 +879,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1018,9 +962,7 @@
       "delete": {
         "operationId": "revokeInvitation",
         "summary": "Revoke a pending invitation",
-        "tags": [
-          "invitations"
-        ],
+        "tags": ["invitations"],
         "security": [
           {
             "sessionCookie": []
@@ -1109,9 +1051,7 @@
       "post": {
         "operationId": "lookupInvitation",
         "summary": "Describe an invitation by token (public; identical answer for unknown tokens)",
-        "tags": [
-          "invitations"
-        ],
+        "tags": ["invitations"],
         "security": [],
         "parameters": [],
         "requestBody": {
@@ -1138,10 +1078,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1184,9 +1121,7 @@
       "post": {
         "operationId": "acceptInvitationWithPassword",
         "summary": "Create a password account for an invited email and accept the invitation (public)",
-        "tags": [
-          "invitations"
-        ],
+        "tags": ["invitations"],
         "security": [],
         "parameters": [],
         "requestBody": {
@@ -1213,10 +1148,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1269,9 +1201,7 @@
       "post": {
         "operationId": "acceptInvitation",
         "summary": "Accept an invitation addressed to the signed-in user's email",
-        "tags": [
-          "invitations"
-        ],
+        "tags": ["invitations"],
         "security": [
           {
             "sessionCookie": []
@@ -1302,10 +1232,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1358,9 +1285,7 @@
       "get": {
         "operationId": "getOnboardingState",
         "summary": "Resume point of the self-serve onboarding wizard",
-        "tags": [
-          "onboarding"
-        ],
+        "tags": ["onboarding"],
         "security": [
           {
             "sessionCookie": []
@@ -1382,10 +1307,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1428,9 +1350,7 @@
       "post": {
         "operationId": "createOnboardingWorkspace",
         "summary": "Create (or rename) the caller's workspace and make them its account admin",
-        "tags": [
-          "onboarding"
-        ],
+        "tags": ["onboarding"],
         "security": [
           {
             "sessionCookie": []
@@ -1461,10 +1381,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1517,9 +1434,7 @@
       "post": {
         "operationId": "createOnboardingProject",
         "summary": "Create (or update) the first project of the caller's workspace",
-        "tags": [
-          "onboarding"
-        ],
+        "tags": ["onboarding"],
         "security": [
           {
             "sessionCookie": []
@@ -1550,10 +1465,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1616,9 +1528,7 @@
       "get": {
         "operationId": "listAccounts",
         "summary": "Accounts visible to the caller (administered or containing one of their projects)",
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "security": [
           {
             "sessionCookie": []
@@ -1643,10 +1553,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1687,9 +1594,7 @@
       "post": {
         "operationId": "createAccount",
         "summary": "Create an account (account admins and super admins)",
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "security": [
           {
             "sessionCookie": []
@@ -1720,10 +1625,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1786,9 +1688,7 @@
       "get": {
         "operationId": "listAdministeredAccounts",
         "summary": "Accounts the caller administers, with their projects",
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "security": [
           {
             "sessionCookie": []
@@ -1813,10 +1713,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1869,9 +1766,7 @@
       "patch": {
         "operationId": "updateAccount",
         "summary": "Rename an account or change its slug",
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "security": [
           {
             "sessionCookie": []
@@ -1913,10 +1808,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -1987,9 +1879,7 @@
       "delete": {
         "operationId": "deleteAccount",
         "summary": "Delete an account; `force=true` also deletes its projects",
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "security": [
           {
             "sessionCookie": []
@@ -2011,10 +1901,7 @@
             "name": "force",
             "schema": {
               "type": "string",
-              "enum": [
-                "true",
-                "false"
-              ]
+              "enum": ["true", "false"]
             }
           }
         ],
@@ -2033,10 +1920,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2109,9 +1993,7 @@
       "get": {
         "operationId": "getMyWorkspace",
         "summary": "Accounts the caller administers and their other project memberships, with counts",
-        "tags": [
-          "me"
-        ],
+        "tags": ["me"],
         "security": [
           {
             "sessionCookie": []
@@ -2133,10 +2015,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2179,9 +2058,7 @@
       "get": {
         "operationId": "listProjects",
         "summary": "Projects the caller can read, newest first (archived ones included)",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2206,10 +2083,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2250,9 +2124,7 @@
       "post": {
         "operationId": "createProject",
         "summary": "Create a project in an account the caller administers",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2283,10 +2155,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2349,9 +2218,7 @@
       "get": {
         "operationId": "getProjectStats",
         "summary": "Ticket, sprint and member counts for visible projects",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2385,10 +2252,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2431,9 +2295,7 @@
       "patch": {
         "operationId": "updateProject",
         "summary": "Edit project details (project managers)",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2475,10 +2337,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2549,9 +2408,7 @@
       "delete": {
         "operationId": "deleteProject",
         "summary": "Permanently delete a project and its content (account admins)",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2630,9 +2487,7 @@
       "post": {
         "operationId": "archiveProject",
         "summary": "Archive a project (read-only, hidden from members)",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2665,10 +2520,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2731,9 +2583,7 @@
       "post": {
         "operationId": "restoreProject",
         "summary": "Restore an archived project",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2766,10 +2616,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2832,9 +2679,7 @@
       "post": {
         "operationId": "moveProject",
         "summary": "Move a project to another account (admin of both accounts)",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2876,10 +2721,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -2952,9 +2794,7 @@
       "get": {
         "operationId": "listProjectPeople",
         "summary": "People who can access the project: members and account admins (no archived users or super admins)",
-        "tags": [
-          "projects"
-        ],
+        "tags": ["projects"],
         "security": [
           {
             "sessionCookie": []
@@ -2990,10 +2830,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3046,9 +2883,7 @@
       "get": {
         "operationId": "listRateCard",
         "summary": "Rate card rows for the given visible projects",
-        "tags": [
-          "rate-card"
-        ],
+        "tags": ["rate-card"],
         "security": [
           {
             "sessionCookie": []
@@ -3082,10 +2917,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3128,9 +2960,7 @@
       "post": {
         "operationId": "createRate",
         "summary": "Add a rate (project managers)",
-        "tags": [
-          "rate-card"
-        ],
+        "tags": ["rate-card"],
         "security": [
           {
             "sessionCookie": []
@@ -3172,10 +3002,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3248,9 +3075,7 @@
       "put": {
         "operationId": "updateRate",
         "summary": "Change a rate (project managers)",
-        "tags": [
-          "rate-card"
-        ],
+        "tags": ["rate-card"],
         "security": [
           {
             "sessionCookie": []
@@ -3302,10 +3127,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3376,9 +3198,7 @@
       "delete": {
         "operationId": "deleteRate",
         "summary": "Remove a rate (project managers)",
-        "tags": [
-          "rate-card"
-        ],
+        "tags": ["rate-card"],
         "security": [
           {
             "sessionCookie": []
@@ -3467,9 +3287,7 @@
       "get": {
         "operationId": "listVisiblePeople",
         "summary": "Names and avatars for the given users, limited to people the caller shares a project or account with",
-        "tags": [
-          "people"
-        ],
+        "tags": ["people"],
         "security": [
           {
             "sessionCookie": []
@@ -3505,10 +3323,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3551,9 +3366,7 @@
       "post": {
         "operationId": "signFileUrls",
         "summary": "Short-lived download URLs for stored files the caller may read (others are omitted)",
-        "tags": [
-          "files"
-        ],
+        "tags": ["files"],
         "security": [
           {
             "sessionCookie": []
@@ -3584,10 +3397,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3630,9 +3440,7 @@
       "post": {
         "operationId": "uploadDocumentImage",
         "summary": "Upload an inline image for rich text (multipart field `file`, PNG/JPEG/GIF/WebP, max 10 MB)",
-        "tags": [
-          "files"
-        ],
+        "tags": ["files"],
         "security": [
           {
             "sessionCookie": []
@@ -3651,9 +3459,7 @@
                     "format": "binary"
                   }
                 },
-                "required": [
-                  "file"
-                ]
+                "required": ["file"]
               }
             }
           }
@@ -3673,10 +3479,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3729,9 +3532,7 @@
       "get": {
         "operationId": "getMyNotificationPreferences",
         "summary": "Notification preferences as trigger key → enabled (missing keys mean enabled)",
-        "tags": [
-          "notifications"
-        ],
+        "tags": ["notifications"],
         "security": [
           {
             "sessionCookie": []
@@ -3753,10 +3554,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3799,9 +3597,7 @@
       "put": {
         "operationId": "setMyNotificationPreference",
         "summary": "Turn one notification trigger on or off",
-        "tags": [
-          "notifications"
-        ],
+        "tags": ["notifications"],
         "security": [
           {
             "sessionCookie": []
@@ -3844,10 +3640,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -3890,9 +3683,7 @@
       "get": {
         "operationId": "listNotifications",
         "summary": "Notification log visible to the caller, newest first",
-        "tags": [
-          "notifications"
-        ],
+        "tags": ["notifications"],
         "security": [
           {
             "sessionCookie": []
@@ -3913,10 +3704,7 @@
             "name": "failed",
             "schema": {
               "type": "string",
-              "enum": [
-                "true",
-                "false"
-              ]
+              "enum": ["true", "false"]
             }
           },
           {
@@ -3963,10 +3751,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4009,9 +3794,7 @@
       "get": {
         "operationId": "countUnseenNotifications",
         "summary": "Personal notifications since a time (sidebar badge)",
-        "tags": [
-          "notifications"
-        ],
+        "tags": ["notifications"],
         "security": [
           {
             "sessionCookie": []
@@ -4043,10 +3826,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4089,9 +3869,7 @@
       "get": {
         "operationId": "getNotification",
         "summary": "One notification with its rendered HTML",
-        "tags": [
-          "notifications"
-        ],
+        "tags": ["notifications"],
         "security": [
           {
             "sessionCookie": []
@@ -4124,10 +3902,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4180,9 +3955,7 @@
       "post": {
         "operationId": "retryNotification",
         "summary": "Re-send a failed notification (admins, within scope)",
-        "tags": [
-          "notifications"
-        ],
+        "tags": ["notifications"],
         "security": [
           {
             "sessionCookie": []
@@ -4215,10 +3988,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4301,9 +4071,7 @@
       "get": {
         "operationId": "listColumns",
         "summary": "Board columns in order",
-        "tags": [
-          "board"
-        ],
+        "tags": ["board"],
         "security": [
           {
             "sessionCookie": []
@@ -4339,10 +4107,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4393,9 +4158,7 @@
       "post": {
         "operationId": "addColumn",
         "summary": "Add a column at the end (project managers)",
-        "tags": [
-          "board"
-        ],
+        "tags": ["board"],
         "security": [
           {
             "sessionCookie": []
@@ -4437,10 +4200,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4513,9 +4273,7 @@
       "patch": {
         "operationId": "updateColumn",
         "summary": "Rename a column or toggle its done flag",
-        "tags": [
-          "board"
-        ],
+        "tags": ["board"],
         "security": [
           {
             "sessionCookie": []
@@ -4567,10 +4325,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4641,9 +4396,7 @@
       "delete": {
         "operationId": "deleteColumn",
         "summary": "Delete a column (its tickets keep no column)",
-        "tags": [
-          "board"
-        ],
+        "tags": ["board"],
         "security": [
           {
             "sessionCookie": []
@@ -4742,9 +4495,7 @@
       "put": {
         "operationId": "reorderColumns",
         "summary": "Set the order of all columns atomically",
-        "tags": [
-          "board"
-        ],
+        "tags": ["board"],
         "security": [
           {
             "sessionCookie": []
@@ -4789,10 +4540,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4865,9 +4613,7 @@
       "get": {
         "operationId": "listSprints",
         "summary": "Sprints in display order",
-        "tags": [
-          "sprints"
-        ],
+        "tags": ["sprints"],
         "security": [
           {
             "sessionCookie": []
@@ -4903,10 +4649,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -4957,9 +4700,7 @@
       "post": {
         "operationId": "createSprint",
         "summary": "Create a planned sprint at the top",
-        "tags": [
-          "sprints"
-        ],
+        "tags": ["sprints"],
         "security": [
           {
             "sessionCookie": []
@@ -5001,10 +4742,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -5077,9 +4815,7 @@
       "patch": {
         "operationId": "updateSprint",
         "summary": "Edit name, goal or dates",
-        "tags": [
-          "sprints"
-        ],
+        "tags": ["sprints"],
         "security": [
           {
             "sessionCookie": []
@@ -5131,10 +4867,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -5205,9 +4938,7 @@
       "delete": {
         "operationId": "deleteSprint",
         "summary": "Delete a sprint; its tickets return to the backlog",
-        "tags": [
-          "sprints"
-        ],
+        "tags": ["sprints"],
         "security": [
           {
             "sessionCookie": []
@@ -5306,9 +5037,7 @@
       "post": {
         "operationId": "startSprint",
         "summary": "Start a sprint now",
-        "tags": [
-          "sprints"
-        ],
+        "tags": ["sprints"],
         "security": [
           {
             "sessionCookie": []
@@ -5351,10 +5080,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -5427,9 +5153,7 @@
       "post": {
         "operationId": "completeSprint",
         "summary": "Complete a sprint, moving unfinished tickets to the backlog (null) or another open sprint",
-        "tags": [
-          "sprints"
-        ],
+        "tags": ["sprints"],
         "security": [
           {
             "sessionCookie": []
@@ -5481,10 +5205,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -5557,9 +5278,7 @@
       "post": {
         "operationId": "moveSprint",
         "summary": "Reorder an unstarted sprint between neighbours",
-        "tags": [
-          "sprints"
-        ],
+        "tags": ["sprints"],
         "security": [
           {
             "sessionCookie": []
@@ -5611,10 +5330,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -5687,9 +5403,7 @@
       "get": {
         "operationId": "listEpics",
         "summary": "Epics of a project by name",
-        "tags": [
-          "epics"
-        ],
+        "tags": ["epics"],
         "security": [
           {
             "sessionCookie": []
@@ -5725,10 +5439,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -5779,9 +5490,7 @@
       "post": {
         "operationId": "createEpic",
         "summary": "Create an epic (unique name per project)",
-        "tags": [
-          "epics"
-        ],
+        "tags": ["epics"],
         "security": [
           {
             "sessionCookie": []
@@ -5823,10 +5532,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -5899,9 +5605,7 @@
       "patch": {
         "operationId": "renameEpic",
         "summary": "Rename an epic",
-        "tags": [
-          "epics"
-        ],
+        "tags": ["epics"],
         "security": [
           {
             "sessionCookie": []
@@ -5953,10 +5657,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6027,9 +5728,7 @@
       "delete": {
         "operationId": "deleteEpic",
         "summary": "Delete an epic and its ticket links (project managers)",
-        "tags": [
-          "epics"
-        ],
+        "tags": ["epics"],
         "security": [
           {
             "sessionCookie": []
@@ -6128,9 +5827,7 @@
       "get": {
         "operationId": "listTickets",
         "summary": "All tickets of a project with logged minutes and epic ids",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -6166,10 +5863,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6220,9 +5914,7 @@
       "post": {
         "operationId": "createTicket",
         "summary": "Create a ticket (code, position, stage history, epics and estimates in one transaction)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -6264,10 +5956,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6340,9 +6029,7 @@
       "post": {
         "operationId": "bulkMoveTickets",
         "summary": "Move tickets to a sprint or the backlog",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -6386,19 +6073,14 @@
                           "maximum": 9007199254740991
                         }
                       },
-                      "required": [
-                        "updated"
-                      ],
+                      "required": ["updated"],
                       "additionalProperties": false
                     },
                     "meta": {
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6471,9 +6153,7 @@
       "post": {
         "operationId": "bulkUpdateTickets",
         "summary": "Bulk edit fields and add epics",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -6517,19 +6197,14 @@
                           "maximum": 9007199254740991
                         }
                       },
-                      "required": [
-                        "updated"
-                      ],
+                      "required": ["updated"],
                       "additionalProperties": false
                     },
                     "meta": {
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6602,9 +6277,7 @@
       "post": {
         "operationId": "bulkDeleteTickets",
         "summary": "Delete tickets without logged time outside completed sprints; others are reported as skipped",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -6646,10 +6319,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6712,9 +6382,7 @@
       "get": {
         "operationId": "listProjectEstimates",
         "summary": "Estimate rows of every ticket in a project (cost reporting)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -6750,10 +6418,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6806,9 +6471,7 @@
       "get": {
         "operationId": "listStageHistory",
         "summary": "Column transitions of the project's tickets, oldest first",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -6844,10 +6507,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6900,9 +6560,7 @@
       "get": {
         "operationId": "getTicket",
         "summary": "A ticket with its description",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -6935,10 +6593,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -6989,9 +6644,7 @@
       "patch": {
         "operationId": "updateTicket",
         "summary": "Save ticket fields, stage and epics in one transaction",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7033,10 +6686,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -7107,9 +6757,7 @@
       "delete": {
         "operationId": "deleteTicket",
         "summary": "Delete a ticket without logged time (project managers)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7198,9 +6846,7 @@
       "post": {
         "operationId": "moveTicket",
         "summary": "Move a ticket between sprints/columns and reorder it",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7242,10 +6888,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -7318,9 +6961,7 @@
       "put": {
         "operationId": "setTicketEpics",
         "summary": "Replace the ticket's epics",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7362,10 +7003,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -7438,9 +7076,7 @@
       "get": {
         "operationId": "listEstimates",
         "summary": "Estimate rows of a ticket",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7476,10 +7112,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -7530,9 +7163,7 @@
       "post": {
         "operationId": "addEstimate",
         "summary": "Add an estimate (ticket total stays in sync)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7574,10 +7205,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -7650,9 +7278,7 @@
       "patch": {
         "operationId": "updateEstimate",
         "summary": "Change an estimate (project managers)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7704,10 +7330,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -7778,9 +7401,7 @@
       "delete": {
         "operationId": "deleteEstimate",
         "summary": "Remove an estimate (project managers)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7879,9 +7500,7 @@
       "get": {
         "operationId": "listWorkLogs",
         "summary": "Time logged on a ticket, newest first",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -7917,10 +7536,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -7971,9 +7587,7 @@
       "post": {
         "operationId": "addWorkLog",
         "summary": "Log time (managers may log for others)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8015,10 +7629,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -8091,9 +7702,7 @@
       "patch": {
         "operationId": "updateWorkLog",
         "summary": "Change a work log (owner or manager)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8145,10 +7754,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -8219,9 +7825,7 @@
       "delete": {
         "operationId": "deleteWorkLog",
         "summary": "Remove a work log (owner or manager)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8320,9 +7924,7 @@
       "get": {
         "operationId": "listComments",
         "summary": "Comments of a ticket, oldest first",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8358,10 +7960,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -8412,9 +8011,7 @@
       "post": {
         "operationId": "addComment",
         "summary": "Comment or reply (mentions and reply authors are emailed)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8456,10 +8053,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -8532,9 +8126,7 @@
       "patch": {
         "operationId": "editComment",
         "summary": "Edit your comment",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8586,10 +8178,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -8660,9 +8249,7 @@
       "delete": {
         "operationId": "deleteComment",
         "summary": "Delete a comment (author or manager) with its replies and files",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8761,9 +8348,7 @@
       "get": {
         "operationId": "listAttachments",
         "summary": "Files attached to a ticket or its comments",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8799,10 +8384,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -8853,9 +8435,7 @@
       "post": {
         "operationId": "uploadAttachment",
         "summary": "Attach a file (multipart field `file`, max 25 MB); `commentId` query attaches it to your comment",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -8894,9 +8474,7 @@
                     "format": "binary"
                   }
                 },
-                "required": [
-                  "file"
-                ]
+                "required": ["file"]
               }
             }
           }
@@ -8916,10 +8494,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -8992,9 +8567,7 @@
       "get": {
         "operationId": "getAttachmentUrl",
         "summary": "Short-lived download URL",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -9037,10 +8610,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -9093,9 +8663,7 @@
       "delete": {
         "operationId": "deleteAttachment",
         "summary": "Remove a file (uploader or manager)",
-        "tags": [
-          "tickets"
-        ],
+        "tags": ["tickets"],
         "security": [
           {
             "sessionCookie": []
@@ -9194,9 +8762,7 @@
       "get": {
         "operationId": "getBillingReport",
         "summary": "GCP billing report proxy (super admins). Query parameters are forwarded to the billing API.",
-        "tags": [
-          "billing"
-        ],
+        "tags": ["billing"],
         "security": [
           {
             "sessionCookie": []
@@ -9208,13 +8774,7 @@
             "name": "report",
             "schema": {
               "type": "string",
-              "enum": [
-                "options",
-                "kpis",
-                "trends",
-                "services",
-                "projects"
-              ]
+              "enum": ["options", "kpis", "trends", "services", "projects"]
             },
             "required": true
           }
@@ -9234,10 +8794,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -9310,9 +8867,7 @@
       "get": {
         "operationId": "listWorkLogEntries",
         "summary": "Work logs across visible projects, filtered; ordered by time",
-        "tags": [
-          "reporting"
-        ],
+        "tags": ["reporting"],
         "security": [
           {
             "sessionCookie": []
@@ -9384,10 +8939,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -9430,9 +8982,7 @@
       "get": {
         "operationId": "searchReportTickets",
         "summary": "Tickets across visible projects with stage name and done flag",
-        "tags": [
-          "reporting"
-        ],
+        "tags": ["reporting"],
         "security": [
           {
             "sessionCookie": []
@@ -9486,10 +9036,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -9532,9 +9079,7 @@
       "get": {
         "operationId": "searchReportSprints",
         "summary": "Sprints across visible projects (e.g. completed ones for release notes)",
-        "tags": [
-          "reporting"
-        ],
+        "tags": ["reporting"],
         "security": [
           {
             "sessionCookie": []
@@ -9574,10 +9119,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -9620,9 +9162,7 @@
       "get": {
         "operationId": "listReportableUsers",
         "summary": "People the caller may report on (self plus members of administered projects)",
-        "tags": [
-          "reporting"
-        ],
+        "tags": ["reporting"],
         "security": [
           {
             "sessionCookie": []
@@ -9655,10 +9195,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -9701,9 +9238,7 @@
       "get": {
         "operationId": "getRagReport",
         "summary": "RAG status of tickets in the active sprints",
-        "tags": [
-          "reporting"
-        ],
+        "tags": ["reporting"],
         "security": [
           {
             "sessionCookie": []
@@ -9736,10 +9271,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -9792,9 +9324,7 @@
       "post": {
         "operationId": "summarizeTicketComments",
         "summary": "AI summary of the ticket's comments (issue, solution, next steps)",
-        "tags": [
-          "reporting"
-        ],
+        "tags": ["reporting"],
         "security": [
           {
             "sessionCookie": []
@@ -9827,10 +9357,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -9913,9 +9440,7 @@
       "get": {
         "operationId": "getUtilization",
         "summary": "Team utilisation for [from, to) against 40h/week prorated capacity",
-        "tags": [
-          "reporting"
-        ],
+        "tags": ["reporting"],
         "security": [
           {
             "sessionCookie": []
@@ -9968,10 +9493,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -10024,9 +9546,7 @@
       "get": {
         "operationId": "getDocumentLibrary",
         "summary": "Documents (metadata only) and folders of one or all visible projects",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10058,10 +9578,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -10104,9 +9621,7 @@
       "get": {
         "operationId": "listDocumentTags",
         "summary": "Document titles for #tag suggestions (max 200)",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10141,10 +9656,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -10187,9 +9699,7 @@
       "get": {
         "operationId": "getDocument",
         "summary": "A document with its content and the caller's permissions",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10222,10 +9732,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -10276,9 +9783,7 @@
       "patch": {
         "operationId": "updateDocument",
         "summary": "Save title, content or icon",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10320,10 +9825,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -10394,9 +9896,7 @@
       "delete": {
         "operationId": "deleteDocument",
         "summary": "Delete a document, its sub-pages and stored files",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10485,9 +9985,7 @@
       "get": {
         "operationId": "downloadDocumentFile",
         "summary": "Stream the file of a file-backed document",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10509,10 +10007,7 @@
             "name": "download",
             "schema": {
               "type": "string",
-              "enum": [
-                "true",
-                "false"
-              ]
+              "enum": ["true", "false"]
             }
           }
         ],
@@ -10574,9 +10069,7 @@
       "post": {
         "operationId": "createDocument",
         "summary": "Create an empty rich-text document",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10618,10 +10111,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -10694,9 +10184,7 @@
       "post": {
         "operationId": "uploadDocumentFile",
         "summary": "Upload a file as a document (multipart field `file`, max 50 MB)",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10735,9 +10223,7 @@
                     "format": "binary"
                   }
                 },
-                "required": [
-                  "file"
-                ]
+                "required": ["file"]
               }
             }
           }
@@ -10757,10 +10243,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -10833,9 +10316,7 @@
       "post": {
         "operationId": "moveDocument",
         "summary": "Move a document into a folder (null = ungrouped)",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10877,10 +10358,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -10953,9 +10431,7 @@
       "post": {
         "operationId": "createDocumentFolder",
         "summary": "Create a folder",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -10997,10 +10473,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -11073,9 +10546,7 @@
       "patch": {
         "operationId": "updateDocumentFolder",
         "summary": "Rename or reorder a folder",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -11117,10 +10588,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -11191,9 +10659,7 @@
       "delete": {
         "operationId": "deleteDocumentFolder",
         "summary": "Delete a folder (documents become ungrouped)",
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "security": [
           {
             "sessionCookie": []
@@ -11282,9 +10748,7 @@
       "get": {
         "operationId": "listSupportIssues",
         "summary": "Your tickets (super admins: all tickets)",
-        "tags": [
-          "support"
-        ],
+        "tags": ["support"],
         "security": [
           {
             "sessionCookie": []
@@ -11296,10 +10760,7 @@
             "name": "status",
             "schema": {
               "type": "string",
-              "enum": [
-                "open",
-                "closed"
-              ]
+              "enum": ["open", "closed"]
             }
           },
           {
@@ -11308,10 +10769,7 @@
             "schema": {
               "default": "desc",
               "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
+              "enum": ["asc", "desc"]
             }
           }
         ],
@@ -11333,10 +10791,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -11377,9 +10832,7 @@
       "post": {
         "operationId": "createSupportIssue",
         "summary": "Open a ticket with an optional first message",
-        "tags": [
-          "support"
-        ],
+        "tags": ["support"],
         "security": [
           {
             "sessionCookie": []
@@ -11410,10 +10863,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -11456,9 +10906,7 @@
       "get": {
         "operationId": "countOpenSupportIssues",
         "summary": "Number of open tickets in the caller's view",
-        "tags": [
-          "support"
-        ],
+        "tags": ["support"],
         "security": [
           {
             "sessionCookie": []
@@ -11480,10 +10928,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -11526,9 +10971,7 @@
       "get": {
         "operationId": "getSupportIssue",
         "summary": "A ticket with its messages",
-        "tags": [
-          "support"
-        ],
+        "tags": ["support"],
         "security": [
           {
             "sessionCookie": []
@@ -11561,10 +11004,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -11615,9 +11055,7 @@
       "patch": {
         "operationId": "setSupportIssueStatus",
         "summary": "Close or reopen a ticket",
-        "tags": [
-          "support"
-        ],
+        "tags": ["support"],
         "security": [
           {
             "sessionCookie": []
@@ -11659,10 +11097,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -11713,9 +11148,7 @@
       "delete": {
         "operationId": "deleteSupportIssue",
         "summary": "Delete a ticket, its messages and files",
-        "tags": [
-          "support"
-        ],
+        "tags": ["support"],
         "security": [
           {
             "sessionCookie": []
@@ -11784,9 +11217,7 @@
       "post": {
         "operationId": "postSupportMessage",
         "summary": "Post a message (multipart: `body` text field, optional `file` image/video max 25 MB)",
-        "tags": [
-          "support"
-        ],
+        "tags": ["support"],
         "security": [
           {
             "sessionCookie": []
@@ -11816,9 +11247,7 @@
                     "format": "binary"
                   }
                 },
-                "required": [
-                  "file"
-                ]
+                "required": ["file"]
               }
             }
           }
@@ -11838,10 +11267,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -11894,9 +11320,7 @@
       "patch": {
         "operationId": "editSupportMessage",
         "summary": "Edit your message while the ticket is open",
-        "tags": [
-          "support"
-        ],
+        "tags": ["support"],
         "security": [
           {
             "sessionCookie": []
@@ -11955,20 +11379,14 @@
                           "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
                         }
                       },
-                      "required": [
-                        "id",
-                        "editedAt"
-                      ],
+                      "required": ["id", "editedAt"],
                       "additionalProperties": false
                     },
                     "meta": {
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12041,9 +11459,7 @@
       "get": {
         "operationId": "checkUnsubscribe",
         "summary": "Check an unsubscribe link (public)",
-        "tags": [
-          "email"
-        ],
+        "tags": ["email"],
         "security": [],
         "parameters": [
           {
@@ -12071,10 +11487,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12115,9 +11528,7 @@
       "post": {
         "operationId": "confirmUnsubscribe",
         "summary": "Unsubscribe (public). Token in the query (RFC 8058 one-click) or JSON body.",
-        "tags": [
-          "email"
-        ],
+        "tags": ["email"],
         "security": [],
         "parameters": [
           {
@@ -12160,10 +11571,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12206,9 +11614,7 @@
       "get": {
         "operationId": "listOrgUsers",
         "summary": "User management view clipped to the open account/project",
-        "tags": [
-          "admin"
-        ],
+        "tags": ["admin"],
         "security": [
           {
             "sessionCookie": []
@@ -12249,10 +11655,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12305,9 +11708,7 @@
       "put": {
         "operationId": "updateUserAccess",
         "summary": "Change a user's role, projects/accounts and profile fields",
-        "tags": [
-          "admin"
-        ],
+        "tags": ["admin"],
         "security": [
           {
             "sessionCookie": []
@@ -12350,19 +11751,14 @@
                           "const": true
                         }
                       },
-                      "required": [
-                        "ok"
-                      ],
+                      "required": ["ok"],
                       "additionalProperties": false
                     },
                     "meta": {
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12433,9 +11829,7 @@
       "delete": {
         "operationId": "removeUserAccess",
         "summary": "Remove access (one project, or everything in the caller's scope); super admins may delete unused identities",
-        "tags": [
-          "admin"
-        ],
+        "tags": ["admin"],
         "security": [
           {
             "sessionCookie": []
@@ -12477,10 +11871,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12543,9 +11934,7 @@
       "get": {
         "operationId": "listUserOpenTickets",
         "summary": "Open tickets assigned to a user and possible new assignees",
-        "tags": [
-          "admin"
-        ],
+        "tags": ["admin"],
         "security": [
           {
             "sessionCookie": []
@@ -12578,10 +11967,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12634,9 +12020,7 @@
       "post": {
         "operationId": "reassignUserTickets",
         "summary": "Reassign a user's open tickets (null = unassigned)",
-        "tags": [
-          "admin"
-        ],
+        "tags": ["admin"],
         "security": [
           {
             "sessionCookie": []
@@ -12680,19 +12064,14 @@
                           "maximum": 9007199254740991
                         }
                       },
-                      "required": [
-                        "reassignedTickets"
-                      ],
+                      "required": ["reassignedTickets"],
                       "additionalProperties": false
                     },
                     "meta": {
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12745,9 +12124,7 @@
       "post": {
         "operationId": "archiveUser",
         "summary": "Archive an identity (super admins), optionally reassigning open tickets",
-        "tags": [
-          "admin"
-        ],
+        "tags": ["admin"],
         "security": [
           {
             "sessionCookie": []
@@ -12789,10 +12166,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12865,9 +12239,7 @@
       "post": {
         "operationId": "restoreUser",
         "summary": "Restore an archived identity (super admins)",
-        "tags": [
-          "admin"
-        ],
+        "tags": ["admin"],
         "security": [
           {
             "sessionCookie": []
@@ -12905,20 +12277,14 @@
                           "maximum": 9007199254740991
                         }
                       },
-                      "required": [
-                        "archived",
-                        "reassignedTickets"
-                      ],
+                      "required": ["archived", "reassignedTickets"],
                       "additionalProperties": false
                     },
                     "meta": {
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -12981,9 +12347,7 @@
       "put": {
         "operationId": "setImportedUserEmail",
         "summary": "Set the real email of a Jira-imported placeholder identity",
-        "tags": [
-          "admin"
-        ],
+        "tags": ["admin"],
         "security": [
           {
             "sessionCookie": []
@@ -13025,19 +12389,14 @@
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "email"
-                      ],
+                      "required": ["email"],
                       "additionalProperties": false
                     },
                     "meta": {
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -13110,9 +12469,7 @@
       "get": {
         "operationId": "listAuditLogs",
         "summary": "Audit trail visible to the caller (admins), paged and sortable",
-        "tags": [
-          "audit"
-        ],
+        "tags": ["audit"],
         "security": [
           {
             "sessionCookie": []
@@ -13169,10 +12526,7 @@
             "schema": {
               "default": "desc",
               "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
+              "enum": ["asc", "desc"]
             }
           },
           {
@@ -13211,10 +12565,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -13267,9 +12618,7 @@
       "get": {
         "operationId": "getJiraStatus",
         "summary": "Whether Jira is configured and connected for the signed-in user (never 503)",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -13291,10 +12640,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -13337,9 +12683,7 @@
       "post": {
         "operationId": "startJiraConnect",
         "summary": "Create a single-use OAuth state and return the Atlassian consent URL",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -13361,10 +12705,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -13427,9 +12768,7 @@
       "get": {
         "operationId": "completeJiraOAuth",
         "summary": "Atlassian OAuth redirect target (public; answers with an HTML page)",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [],
         "parameters": [
           {
@@ -13480,10 +12819,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -13526,9 +12862,7 @@
       "delete": {
         "operationId": "disconnectJira",
         "summary": "Forget the signed-in user's Jira connection",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -13586,9 +12920,7 @@
       "get": {
         "operationId": "listJiraSites",
         "summary": "Atlassian sites the connection granted (empty when not connected)",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -13613,10 +12945,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -13669,9 +12998,7 @@
       "put": {
         "operationId": "selectJiraSite",
         "summary": "Switch the connection to another granted Atlassian site",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -13702,10 +13029,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -13788,9 +13112,7 @@
       "get": {
         "operationId": "listJiraProjects",
         "summary": "Jira projects of the connected site (empty when not connected)",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -13815,10 +13137,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -13891,9 +13210,7 @@
       "get": {
         "operationId": "searchJiraIssues",
         "summary": "Issues of a Jira project, newest first, optionally filtered by text",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -13943,10 +13260,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -14019,9 +13333,7 @@
       "get": {
         "operationId": "checkJiraProjectImported",
         "summary": "Whether a Jira project was already imported into an account (account admins)",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -14073,10 +13385,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -14139,9 +13448,7 @@
       "post": {
         "operationId": "startJiraImport",
         "summary": "Start (or resume) importing a Jira project into an account (account admins)",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -14172,10 +13479,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -14258,9 +13562,7 @@
       "get": {
         "operationId": "getJiraImport",
         "summary": "Progress of one of the caller's imports",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -14293,10 +13595,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -14359,9 +13658,7 @@
       "post": {
         "operationId": "stepJiraImport",
         "summary": "Process the next bounded slice (setup, then 50 issues per call); the client loops",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -14394,10 +13691,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -14470,9 +13764,7 @@
       "get": {
         "operationId": "listJiraImportCandidates",
         "summary": "People of the import's account an unmatched Jira person can be matched to",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -14508,10 +13800,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -14584,9 +13873,7 @@
       "post": {
         "operationId": "assignJiraImportUsers",
         "summary": "Match unresolved Jira people to users and reassign their tickets",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -14628,10 +13915,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -14714,9 +13998,7 @@
       "post": {
         "operationId": "inviteJiraImportedUsers",
         "summary": "Invite people found in the import to its project",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -14758,10 +14040,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -14854,9 +14133,7 @@
       "post": {
         "operationId": "repairJiraImportAttribution",
         "summary": "Re-point imported comments and time logs at their matched Jira authors (paged)",
-        "tags": [
-          "jira"
-        ],
+        "tags": ["jira"],
         "security": [
           {
             "sessionCookie": []
@@ -14898,10 +14175,7 @@
                       "$ref": "#/components/schemas/ResponseMeta"
                     }
                   },
-                  "required": [
-                    "data",
-                    "meta"
-                  ],
+                  "required": ["data", "meta"],
                   "additionalProperties": false
                 }
               }
@@ -15020,11 +14294,7 @@
           },
           "timezone": {
             "type": "string",
-            "enum": [
-              "PKT",
-              "IST",
-              "AEST"
-            ]
+            "enum": ["PKT", "IST", "AEST"]
           }
         }
       },
@@ -15057,12 +14327,7 @@
             "anyOf": [
               {
                 "type": "string",
-                "enum": [
-                  "full_time",
-                  "part_time",
-                  "contract",
-                  "project"
-                ]
+                "enum": ["full_time", "part_time", "contract", "project"]
               },
               {
                 "type": "null"
@@ -15076,11 +14341,7 @@
         "properties": {
           "kind": {
             "type": "string",
-            "enum": [
-              "holiday",
-              "sick",
-              "other"
-            ]
+            "enum": ["holiday", "sick", "other"]
           },
           "startDate": {
             "type": "string",
@@ -15104,11 +14365,7 @@
             ]
           }
         },
-        "required": [
-          "kind",
-          "startDate",
-          "endDate"
-        ]
+        "required": ["kind", "startDate", "endDate"]
       },
       "CreateInvitationRequest": {
         "type": "object",
@@ -15165,21 +14422,11 @@
             ]
           }
         },
-        "required": [
-          "email",
-          "role"
-        ]
+        "required": ["email", "role"]
       },
       "AppRole": {
         "type": "string",
-        "enum": [
-          "super_admin",
-          "account_admin",
-          "admin",
-          "developer",
-          "team",
-          "viewer"
-        ]
+        "enum": ["super_admin", "account_admin", "admin", "developer", "team", "viewer"]
       },
       "InvitationLookupRequest": {
         "type": "object",
@@ -15189,9 +14436,7 @@
             "maxLength": 500
           }
         },
-        "required": [
-          "token"
-        ]
+        "required": ["token"]
       },
       "AcceptInvitationWithPasswordRequest": {
         "type": "object",
@@ -15228,10 +14473,7 @@
             ]
           }
         },
-        "required": [
-          "token",
-          "password"
-        ]
+        "required": ["token", "password"]
       },
       "AcceptInvitationRequest": {
         "type": "object",
@@ -15241,9 +14483,7 @@
             "maxLength": 500
           }
         },
-        "required": [
-          "token"
-        ]
+        "required": ["token"]
       },
       "CreateWorkspaceRequest": {
         "type": "object",
@@ -15276,9 +14516,7 @@
             ]
           }
         },
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "CreateFirstProjectRequest": {
         "type": "object",
@@ -15314,19 +14552,11 @@
             ]
           }
         },
-        "required": [
-          "accountId",
-          "name",
-          "key",
-          "projectType"
-        ]
+        "required": ["accountId", "name", "key", "projectType"]
       },
       "ProjectType": {
         "type": "string",
-        "enum": [
-          "sprint",
-          "kanban"
-        ]
+        "enum": ["sprint", "kanban"]
       },
       "CreateAccountRequest": {
         "type": "object",
@@ -15350,9 +14580,7 @@
             ]
           }
         },
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "UpdateAccountRequest": {
         "type": "object",
@@ -15414,12 +14642,7 @@
             ]
           }
         },
-        "required": [
-          "accountId",
-          "name",
-          "key",
-          "projectType"
-        ]
+        "required": ["accountId", "name", "key", "projectType"]
       },
       "UpdateProjectRequest": {
         "type": "object",
@@ -15470,9 +14693,7 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
-        "required": [
-          "accountId"
-        ]
+        "required": ["accountId"]
       },
       "RateRequest": {
         "type": "object",
@@ -15499,10 +14720,7 @@
             "maximum": 99999999.99
           }
         },
-        "required": [
-          "role",
-          "hourlyRate"
-        ]
+        "required": ["role", "hourlyRate"]
       },
       "SignFileUrlsRequest": {
         "type": "object",
@@ -15521,20 +14739,11 @@
             }
           }
         },
-        "required": [
-          "area",
-          "keys"
-        ]
+        "required": ["area", "keys"]
       },
       "StorageArea": {
         "type": "string",
-        "enum": [
-          "avatars",
-          "attachments",
-          "document-images",
-          "documents",
-          "support"
-        ]
+        "enum": ["avatars", "attachments", "document-images", "documents", "support"]
       },
       "SetNotificationPreferenceRequest": {
         "type": "object",
@@ -15543,9 +14752,7 @@
             "type": "boolean"
           }
         },
-        "required": [
-          "enabled"
-        ]
+        "required": ["enabled"]
       },
       "AddColumnRequest": {
         "type": "object",
@@ -15556,9 +14763,7 @@
             "maxLength": 60
           }
         },
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "UpdateColumnRequest": {
         "type": "object",
@@ -15587,9 +14792,7 @@
             }
           }
         },
-        "required": [
-          "columnIds"
-        ]
+        "required": ["columnIds"]
       },
       "CreateSprintRequest": {
         "type": "object",
@@ -15635,9 +14838,7 @@
             ]
           }
         },
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "UpdateSprintRequest": {
         "type": "object",
@@ -15700,9 +14901,7 @@
             ]
           }
         },
-        "required": [
-          "moveOpenTicketsTo"
-        ]
+        "required": ["moveOpenTicketsTo"]
       },
       "MoveSprintRequest": {
         "type": "object",
@@ -15742,9 +14941,7 @@
             "maxLength": 80
           }
         },
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "CreateTicketRequest": {
         "type": "object",
@@ -15863,19 +15060,11 @@
                   "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
                 }
               },
-              "required": [
-                "resourceType",
-                "minutes"
-              ]
+              "required": ["resourceType", "minutes"]
             }
           }
         },
-        "required": [
-          "title",
-          "descriptionJson",
-          "type",
-          "priority"
-        ]
+        "required": ["title", "descriptionJson", "type", "priority"]
       },
       "BulkMoveTicketsRequest": {
         "type": "object",
@@ -15903,10 +15092,7 @@
             ]
           }
         },
-        "required": [
-          "ticketIds",
-          "sprintId"
-        ]
+        "required": ["ticketIds", "sprintId"]
       },
       "BulkUpdateTicketsRequest": {
         "type": "object",
@@ -15995,9 +15181,7 @@
             }
           }
         },
-        "required": [
-          "ticketIds"
-        ]
+        "required": ["ticketIds"]
       },
       "BulkDeleteTicketsRequest": {
         "type": "object",
@@ -16013,9 +15197,7 @@
             }
           }
         },
-        "required": [
-          "ticketIds"
-        ]
+        "required": ["ticketIds"]
       },
       "UpdateTicketRequest": {
         "type": "object",
@@ -16183,9 +15365,7 @@
             }
           }
         },
-        "required": [
-          "epicIds"
-        ]
+        "required": ["epicIds"]
       },
       "AddEstimateRequest": {
         "type": "object",
@@ -16212,10 +15392,7 @@
             ]
           }
         },
-        "required": [
-          "resourceType",
-          "minutes"
-        ]
+        "required": ["resourceType", "minutes"]
       },
       "UpdateEstimateRequest": {
         "type": "object",
@@ -16268,11 +15445,7 @@
             ]
           }
         },
-        "required": [
-          "minutes",
-          "note",
-          "loggedAt"
-        ]
+        "required": ["minutes", "note", "loggedAt"]
       },
       "UpdateWorkLogRequest": {
         "type": "object",
@@ -16335,9 +15508,7 @@
             "type": "boolean"
           }
         },
-        "required": [
-          "body"
-        ]
+        "required": ["body"]
       },
       "EditCommentRequest": {
         "type": "object",
@@ -16347,9 +15518,7 @@
             "maxLength": 200000
           }
         },
-        "required": [
-          "body"
-        ]
+        "required": ["body"]
       },
       "UpdateDocumentRequest": {
         "type": "object",
@@ -16434,9 +15603,7 @@
             ]
           }
         },
-        "required": [
-          "folderId"
-        ]
+        "required": ["folderId"]
       },
       "CreateFolderRequest": {
         "type": "object",
@@ -16480,24 +15647,17 @@
             ]
           }
         },
-        "required": [
-          "subject"
-        ]
+        "required": ["subject"]
       },
       "SetSupportIssueStatusRequest": {
         "type": "object",
         "properties": {
           "status": {
             "type": "string",
-            "enum": [
-              "open",
-              "closed"
-            ]
+            "enum": ["open", "closed"]
           }
         },
-        "required": [
-          "status"
-        ]
+        "required": ["status"]
       },
       "EditSupportMessageRequest": {
         "type": "object",
@@ -16508,23 +15668,14 @@
             "description": "Serialized TipTap JSON or text"
           }
         },
-        "required": [
-          "body"
-        ]
+        "required": ["body"]
       },
       "UpdateUserAccessRequest": {
         "type": "object",
         "properties": {
           "role": {
             "type": "string",
-            "enum": [
-              "super_admin",
-              "account_admin",
-              "admin",
-              "developer",
-              "team",
-              "viewer"
-            ]
+            "enum": ["super_admin", "account_admin", "admin", "developer", "team", "viewer"]
           },
           "projectIds": {
             "anyOf": [
@@ -16616,9 +15767,7 @@
             ]
           }
         },
-        "required": [
-          "role"
-        ]
+        "required": ["role"]
       },
       "ReassignTicketsRequest": {
         "type": "object",
@@ -16636,9 +15785,7 @@
             ]
           }
         },
-        "required": [
-          "assigneeId"
-        ]
+        "required": ["assigneeId"]
       },
       "ArchiveUserRequest": {
         "type": "object",
@@ -16659,9 +15806,7 @@
                 ]
               }
             },
-            "required": [
-              "assigneeId"
-            ]
+            "required": ["assigneeId"]
           }
         }
       },
@@ -16673,9 +15818,7 @@
             "maxLength": 320
           }
         },
-        "required": [
-          "email"
-        ]
+        "required": ["email"]
       },
       "JiraSelectSiteRequest": {
         "type": "object",
@@ -16687,9 +15830,7 @@
             "pattern": "^[A-Za-z0-9-]+$"
           }
         },
-        "required": [
-          "cloudId"
-        ]
+        "required": ["cloudId"]
       },
       "JiraStartImportRequest": {
         "type": "object",
@@ -16719,13 +15860,7 @@
             "maxLength": 200
           }
         },
-        "required": [
-          "accountId",
-          "cloudId",
-          "jiraProjectId",
-          "jiraProjectKey",
-          "jiraProjectName"
-        ]
+        "required": ["accountId", "cloudId", "jiraProjectId", "jiraProjectKey", "jiraProjectName"]
       },
       "JiraAssignImportUsersRequest": {
         "type": "object",
@@ -16748,10 +15883,7 @@
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": [
-                "key",
-                "userId"
-              ]
+              "required": ["key", "userId"]
             }
           }
         }
@@ -16799,12 +15931,7 @@
         "properties": {
           "status": {
             "type": "string",
-            "enum": [
-              "active",
-              "needs_onboarding",
-              "no_access",
-              "archived"
-            ]
+            "enum": ["active", "needs_onboarding", "no_access", "archived"]
           },
           "globalRoles": {
             "type": "array",
@@ -16843,13 +15970,7 @@
             "description": "visible project id → account id"
           }
         },
-        "required": [
-          "status",
-          "globalRoles",
-          "adminAccountIds",
-          "projectRoles",
-          "projectAccounts"
-        ],
+        "required": ["status", "globalRoles", "adminAccountIds", "projectRoles", "projectAccounts"],
         "additionalProperties": false
       },
       "ResponseMeta": {
@@ -16859,9 +15980,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "requestId"
-        ],
+        "required": ["requestId"],
         "additionalProperties": false,
         "description": "Present on every JSON response"
       },
@@ -16891,28 +16010,19 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "message"
-                  ],
+                  "required": ["message"],
                   "additionalProperties": false
                 }
               }
             },
-            "required": [
-              "code",
-              "message",
-              "details"
-            ],
+            "required": ["code", "message", "details"],
             "additionalProperties": false
           },
           "meta": {
             "$ref": "#/components/schemas/ResponseMeta"
           }
         },
-        "required": [
-          "error",
-          "meta"
-        ],
+        "required": ["error", "meta"],
         "additionalProperties": false
       },
       "Me": {
@@ -16932,34 +16042,19 @@
             "type": "boolean"
           },
           "fullName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "firstName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "lastName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "avatarUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "jobTitle": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "timezone": {
             "type": "string"
@@ -16982,27 +16077,16 @@
         "type": "object",
         "properties": {
           "mobile": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "employeeNumber": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "employmentStatus": {
             "anyOf": [
               {
                 "type": "string",
-                "enum": [
-                  "full_time",
-                  "part_time",
-                  "contract",
-                  "project"
-                ]
+                "enum": ["full_time", "part_time", "contract", "project"]
               },
               {
                 "type": "null"
@@ -17010,11 +16094,7 @@
             ]
           }
         },
-        "required": [
-          "mobile",
-          "employeeNumber",
-          "employmentStatus"
-        ],
+        "required": ["mobile", "employeeNumber", "employmentStatus"],
         "additionalProperties": false
       },
       "TimeOff": {
@@ -17027,11 +16107,7 @@
           },
           "kind": {
             "type": "string",
-            "enum": [
-              "holiday",
-              "sick",
-              "other"
-            ]
+            "enum": ["holiday", "sick", "other"]
           },
           "startDate": {
             "type": "string",
@@ -17044,19 +16120,10 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
           },
           "note": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
-        "required": [
-          "id",
-          "kind",
-          "startDate",
-          "endDate",
-          "note"
-        ],
+        "required": ["id", "kind", "startDate", "endDate", "note"],
         "additionalProperties": false
       },
       "CreateInvitationResult": {
@@ -17070,21 +16137,13 @@
             "$ref": "#/components/schemas/Invitation"
           },
           "projectName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "emailQueued": {
             "type": "boolean"
           }
         },
-        "required": [
-          "duplicate",
-          "invitation",
-          "projectName",
-          "emailQueued"
-        ],
+        "required": ["duplicate", "invitation", "projectName", "emailQueued"],
         "additionalProperties": false
       },
       "Invitation": {
@@ -17120,10 +16179,7 @@
             }
           },
           "jobTitle": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "expiresAt": {
             "type": "string",
@@ -17160,10 +16216,7 @@
             "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
           }
         },
-        "required": [
-          "emailQueued",
-          "email"
-        ],
+        "required": ["emailQueued", "email"],
         "additionalProperties": false
       },
       "InvitationLookupResult": {
@@ -17190,10 +16243,7 @@
             "type": "boolean"
           },
           "projectName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "projectId": {
             "anyOf": [
@@ -17220,10 +16270,7 @@
             ]
           }
         },
-        "required": [
-          "valid",
-          "expired"
-        ],
+        "required": ["valid", "expired"],
         "additionalProperties": false
       },
       "AcceptInvitationWithPasswordResult": {
@@ -17235,9 +16282,7 @@
             "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
           }
         },
-        "required": [
-          "email"
-        ],
+        "required": ["email"],
         "additionalProperties": false
       },
       "AcceptInvitationResult": {
@@ -17247,10 +16292,7 @@
             "type": "boolean"
           },
           "projectName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "projectId": {
             "anyOf": [
@@ -17277,12 +16319,7 @@
             ]
           }
         },
-        "required": [
-          "alreadyAccepted",
-          "projectName",
-          "projectId",
-          "accountId"
-        ],
+        "required": ["alreadyAccepted", "projectName", "projectId", "accountId"],
         "additionalProperties": false
       },
       "OnboardingState": {
@@ -17301,10 +16338,7 @@
             ]
           },
           "accountName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "projectId": {
             "anyOf": [
@@ -17319,16 +16353,10 @@
             ]
           },
           "projectName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "projectKey": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "projectType": {
             "anyOf": [
@@ -17375,10 +16403,7 @@
             "const": "account_admin"
           }
         },
-        "required": [
-          "accountId",
-          "role"
-        ],
+        "required": ["accountId", "role"],
         "additionalProperties": false
       },
       "CreateFirstProjectResult": {
@@ -17393,10 +16418,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "projectId",
-          "projectName"
-        ],
+        "required": ["projectId", "projectName"],
         "additionalProperties": false
       },
       "Account": {
@@ -17419,12 +16441,7 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           }
         },
-        "required": [
-          "id",
-          "name",
-          "slug",
-          "createdAt"
-        ],
+        "required": ["id", "name", "slug", "createdAt"],
         "additionalProperties": false
       },
       "AdministeredAccount": {
@@ -17463,22 +16480,12 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "name",
-                "key"
-              ],
+              "required": ["id", "name", "key"],
               "additionalProperties": false
             }
           }
         },
-        "required": [
-          "id",
-          "name",
-          "slug",
-          "createdAt",
-          "projects"
-        ],
+        "required": ["id", "name", "slug", "createdAt", "projects"],
         "additionalProperties": false
       },
       "DeleteAccountResult": {
@@ -17490,9 +16497,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "deletedProjects"
-        ],
+        "required": ["deletedProjects"],
         "additionalProperties": false
       },
       "MyWorkspace": {
@@ -17573,13 +16578,7 @@
                   }
                 }
               },
-              "required": [
-                "id",
-                "name",
-                "slug",
-                "createdAt",
-                "projects"
-              ],
+              "required": ["id", "name", "slug", "createdAt", "projects"],
               "additionalProperties": false
             }
           },
@@ -17651,10 +16650,7 @@
             }
           }
         },
-        "required": [
-          "accounts",
-          "projects"
-        ],
+        "required": ["accounts", "projects"],
         "additionalProperties": false
       },
       "Project": {
@@ -17677,10 +16673,7 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
           "clientAccount": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "ownerId": {
             "anyOf": [
@@ -17695,10 +16688,7 @@
             ]
           },
           "description": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "projectType": {
             "$ref": "#/components/schemas/ProjectType"
@@ -17801,34 +16791,19 @@
         "type": "object",
         "properties": {
           "fullName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "firstName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "lastName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "avatarUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "jobTitle": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "userId": {
             "type": "string",
@@ -17875,23 +16850,14 @@
             "type": "string"
           },
           "location": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "hourlyRate": {
             "type": "string",
             "description": "Decimal string, 2 fraction digits"
           }
         },
-        "required": [
-          "id",
-          "projectId",
-          "role",
-          "location",
-          "hourlyRate"
-        ],
+        "required": ["id", "projectId", "role", "location", "hourlyRate"],
         "additionalProperties": false
       },
       "Person": {
@@ -17903,44 +16869,22 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
           "fullName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "firstName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "lastName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "avatarUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "jobTitle": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
-        "required": [
-          "id",
-          "fullName",
-          "firstName",
-          "lastName",
-          "avatarUrl",
-          "jobTitle"
-        ],
+        "required": ["id", "fullName", "firstName", "lastName", "avatarUrl", "jobTitle"],
         "additionalProperties": false
       },
       "SignedFileUrls": {
@@ -17956,9 +16900,7 @@
             }
           }
         },
-        "required": [
-          "urls"
-        ],
+        "required": ["urls"],
         "additionalProperties": false
       },
       "UploadedImage": {
@@ -17971,10 +16913,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "key",
-          "url"
-        ],
+        "required": ["key", "url"],
         "additionalProperties": false
       },
       "NotificationPreferences": {
@@ -17996,10 +16935,7 @@
             "type": "boolean"
           }
         },
-        "required": [
-          "key",
-          "enabled"
-        ],
+        "required": ["key", "enabled"],
         "additionalProperties": false
       },
       "NotificationLog": {
@@ -18022,11 +16958,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "items",
-          "total",
-          "failedCount"
-        ],
+        "required": ["items", "total", "failedCount"],
         "additionalProperties": false
       },
       "NotificationRow": {
@@ -18047,16 +16979,10 @@
             "type": "string"
           },
           "subject": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "errorMessage": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "createdAt": {
             "type": "string",
@@ -18064,40 +16990,22 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           },
           "kind": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "author": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "projectId": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "ticketId": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "ticketCode": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "ticketTitle": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
         "required": [
@@ -18126,9 +17034,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "count"
-        ],
+        "required": ["count"],
         "additionalProperties": false
       },
       "NotificationDetail": {
@@ -18149,16 +17055,10 @@
             "type": "string"
           },
           "subject": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "errorMessage": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "createdAt": {
             "type": "string",
@@ -18166,46 +17066,25 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           },
           "kind": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "author": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "projectId": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "ticketId": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "ticketCode": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "ticketTitle": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "html": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
         "required": [
@@ -18238,9 +17117,7 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
-        "required": [
-          "status"
-        ],
+        "required": ["status"],
         "additionalProperties": false
       },
       "BoardColumn": {
@@ -18268,13 +17145,7 @@
             "type": "boolean"
           }
         },
-        "required": [
-          "id",
-          "projectId",
-          "name",
-          "orderIndex",
-          "isDone"
-        ],
+        "required": ["id", "projectId", "name", "orderIndex", "isDone"],
         "additionalProperties": false
       },
       "Sprint": {
@@ -18294,18 +17165,11 @@
             "type": "string"
           },
           "goal": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "status": {
             "type": "string",
-            "enum": [
-              "planned",
-              "active",
-              "completed"
-            ]
+            "enum": ["planned", "active", "completed"]
           },
           "startsAt": {
             "anyOf": [
@@ -18368,10 +17232,7 @@
             }
           }
         },
-        "required": [
-          "sprint",
-          "movedTicketIds"
-        ],
+        "required": ["sprint", "movedTicketIds"],
         "additionalProperties": false
       },
       "Epic": {
@@ -18408,13 +17269,7 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           }
         },
-        "required": [
-          "id",
-          "projectId",
-          "name",
-          "createdBy",
-          "createdAt"
-        ],
+        "required": ["id", "projectId", "name", "createdBy", "createdAt"],
         "additionalProperties": false
       },
       "TicketSummary": {
@@ -18782,18 +17637,12 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "reason"
-              ],
+              "required": ["id", "reason"],
               "additionalProperties": false
             }
           }
         },
-        "required": [
-          "deleted",
-          "skipped"
-        ],
+        "required": ["deleted", "skipped"],
         "additionalProperties": false
       },
       "ProjectEstimate": {
@@ -18813,11 +17662,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "ticketId",
-          "resourceType",
-          "minutes"
-        ],
+        "required": ["ticketId", "resourceType", "minutes"],
         "additionalProperties": false
       },
       "StageTransition": {
@@ -18866,14 +17711,7 @@
             ]
           }
         },
-        "required": [
-          "id",
-          "ticketId",
-          "columnId",
-          "columnName",
-          "enteredAt",
-          "movedBy"
-        ],
+        "required": ["id", "ticketId", "columnId", "columnName", "enteredAt", "movedBy"],
         "additionalProperties": false
       },
       "Estimate": {
@@ -18898,10 +17736,7 @@
             "maximum": 9007199254740991
           },
           "note": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "estimatedAt": {
             "type": "string",
@@ -18949,16 +17784,10 @@
             "maximum": 9007199254740991
           },
           "note": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "resourceType": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "loggedAt": {
             "type": "string",
@@ -18966,15 +17795,7 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           }
         },
-        "required": [
-          "id",
-          "ticketId",
-          "userId",
-          "minutes",
-          "note",
-          "resourceType",
-          "loggedAt"
-        ],
+        "required": ["id", "ticketId", "userId", "minutes", "note", "resourceType", "loggedAt"],
         "additionalProperties": false
       },
       "Comment": {
@@ -19017,14 +17838,7 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           }
         },
-        "required": [
-          "id",
-          "ticketId",
-          "parentId",
-          "authorId",
-          "body",
-          "createdAt"
-        ],
+        "required": ["id", "ticketId", "parentId", "authorId", "body", "createdAt"],
         "additionalProperties": false
       },
       "Attachment": {
@@ -19054,19 +17868,13 @@
           },
           "context": {
             "type": "string",
-            "enum": [
-              "description",
-              "comment"
-            ]
+            "enum": ["description", "comment"]
           },
           "name": {
             "type": "string"
           },
           "mime": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "size": {
             "anyOf": [
@@ -19122,9 +17930,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "url"
-        ],
+        "required": ["url"],
         "additionalProperties": false
       },
       "BillingReport": {
@@ -19164,16 +17970,10 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           },
           "note": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "resourceType": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
         "required": [
@@ -19255,10 +18055,7 @@
             "maximum": 9007199254740991
           },
           "dueDate": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "updatedAt": {
             "type": "string",
@@ -19266,10 +18063,7 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           },
           "stageName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "isDone": {
             "type": "boolean"
@@ -19310,10 +18104,7 @@
             "type": "string"
           },
           "goal": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "status": {
             "type": "string"
@@ -19346,16 +18137,7 @@
             "type": "number"
           }
         },
-        "required": [
-          "id",
-          "projectId",
-          "name",
-          "goal",
-          "status",
-          "startsAt",
-          "endsAt",
-          "position"
-        ],
+        "required": ["id", "projectId", "name", "goal", "status", "startsAt", "endsAt", "position"],
         "additionalProperties": false
       },
       "ReportableUser": {
@@ -19370,17 +18152,10 @@
             "type": "string"
           },
           "avatarUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
-        "required": [
-          "id",
-          "displayName",
-          "avatarUrl"
-        ],
+        "required": ["id", "displayName", "avatarUrl"],
         "additionalProperties": false
       },
       "RagReport": {
@@ -19400,10 +18175,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "name"
-              ],
+              "required": ["id", "name"],
               "additionalProperties": false
             }
           },
@@ -19426,11 +18198,7 @@
                 "maximum": 9007199254740991
               }
             },
-            "required": [
-              "red",
-              "orange",
-              "green"
-            ],
+            "required": ["red", "orange", "green"],
             "additionalProperties": false
           },
           "rows": {
@@ -19478,11 +18246,7 @@
                 },
                 "status": {
                   "type": "string",
-                  "enum": [
-                    "red",
-                    "orange",
-                    "green"
-                  ]
+                  "enum": ["red", "orange", "green"]
                 }
               },
               "required": [
@@ -19502,11 +18266,7 @@
             }
           }
         },
-        "required": [
-          "sprints",
-          "counts",
-          "rows"
-        ],
+        "required": ["sprints", "counts", "rows"],
         "additionalProperties": false
       },
       "CommentSummary": {
@@ -19531,11 +18291,7 @@
             }
           }
         },
-        "required": [
-          "issue",
-          "solution",
-          "nextSteps"
-        ],
+        "required": ["issue", "solution", "nextSteps"],
         "additionalProperties": false
       },
       "Utilization": {
@@ -19558,10 +18314,7 @@
                 "type": "number"
               }
             },
-            "required": [
-              "loggedMinutes",
-              "utilization"
-            ],
+            "required": ["loggedMinutes", "utilization"],
             "additionalProperties": false
           },
           "members": {
@@ -19578,25 +18331,16 @@
                   "type": "string"
                 },
                 "avatarUrl": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "jobTitle": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "role": {
                   "type": "string"
                 },
                 "projectRole": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "openTicketCount": {
                   "type": "integer",
@@ -19630,11 +18374,7 @@
                         "maximum": 9007199254740991
                       }
                     },
-                    "required": [
-                      "ticketId",
-                      "code",
-                      "minutes"
-                    ],
+                    "required": ["ticketId", "code", "minutes"],
                     "additionalProperties": false
                   }
                 }
@@ -19675,21 +18415,12 @@
                   "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
                 }
               },
-              "required": [
-                "userId",
-                "minutes",
-                "loggedAt"
-              ],
+              "required": ["userId", "minutes", "loggedAt"],
               "additionalProperties": false
             }
           }
         },
-        "required": [
-          "capacityMinutesPerMember",
-          "team",
-          "members",
-          "logs"
-        ],
+        "required": ["capacityMinutesPerMember", "team", "members", "logs"],
         "additionalProperties": false
       },
       "DocumentLibrary": {
@@ -19708,10 +18439,7 @@
             }
           }
         },
-        "required": [
-          "documents",
-          "folders"
-        ],
+        "required": ["documents", "folders"],
         "additionalProperties": false
       },
       "DocumentMeta": {
@@ -19755,10 +18483,7 @@
             "type": "string"
           },
           "icon": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "position": {
             "type": "number"
@@ -19784,10 +18509,7 @@
                     ]
                   }
                 },
-                "required": [
-                  "mime",
-                  "size"
-                ],
+                "required": ["mime", "size"],
                 "additionalProperties": false
               },
               {
@@ -19859,13 +18581,7 @@
             ]
           }
         },
-        "required": [
-          "id",
-          "projectId",
-          "name",
-          "position",
-          "createdBy"
-        ],
+        "required": ["id", "projectId", "name", "position", "createdBy"],
         "additionalProperties": false
       },
       "DocumentTag": {
@@ -19880,10 +18596,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "id",
-          "title"
-        ],
+        "required": ["id", "title"],
         "additionalProperties": false
       },
       "Document": {
@@ -19927,10 +18640,7 @@
             "type": "string"
           },
           "icon": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "position": {
             "type": "number"
@@ -19956,10 +18666,7 @@
                     ]
                   }
                 },
-                "required": [
-                  "mime",
-                  "size"
-                ],
+                "required": ["mime", "size"],
                 "additionalProperties": false
               },
               {
@@ -20025,10 +18732,7 @@
           },
           "status": {
             "type": "string",
-            "enum": [
-              "open",
-              "closed"
-            ]
+            "enum": ["open", "closed"]
           },
           "createdAt": {
             "type": "string",
@@ -20052,29 +18756,14 @@
                 "type": "string"
               },
               "avatarUrl": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": ["string", "null"]
               }
             },
-            "required": [
-              "id",
-              "name",
-              "avatarUrl"
-            ],
+            "required": ["id", "name", "avatarUrl"],
             "additionalProperties": false
           }
         },
-        "required": [
-          "id",
-          "ticketNumber",
-          "subject",
-          "status",
-          "createdAt",
-          "updatedAt",
-          "owner"
-        ],
+        "required": ["id", "ticketNumber", "subject", "status", "createdAt", "updatedAt", "owner"],
         "additionalProperties": false
       },
       "CreateSupportIssueResult": {
@@ -20096,10 +18785,7 @@
             ]
           }
         },
-        "required": [
-          "issue",
-          "messageId"
-        ],
+        "required": ["issue", "messageId"],
         "additionalProperties": false
       },
       "SupportOpenCount": {
@@ -20111,9 +18797,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "count"
-        ],
+        "required": ["count"],
         "additionalProperties": false
       },
       "SupportIssueDetail": {
@@ -20144,16 +18828,10 @@
                       "type": "string"
                     },
                     "avatarUrl": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
+                      "type": ["string", "null"]
                     }
                   },
-                  "required": [
-                    "name",
-                    "avatarUrl"
-                  ],
+                  "required": ["name", "avatarUrl"],
                   "additionalProperties": false
                 },
                 "body": {
@@ -20161,10 +18839,7 @@
                 },
                 "attachmentKey": {
                   "description": "Sign with area `support`",
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "createdAt": {
                   "type": "string",
@@ -20201,10 +18876,7 @@
             }
           }
         },
-        "required": [
-          "issue",
-          "messages"
-        ],
+        "required": ["issue", "messages"],
         "additionalProperties": false
       },
       "SupportMessagePosted": {
@@ -20221,17 +18893,10 @@
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
           },
           "attachmentKey": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
-        "required": [
-          "id",
-          "createdAt",
-          "attachmentKey"
-        ],
+        "required": ["id", "createdAt", "attachmentKey"],
         "additionalProperties": false
       },
       "UnsubscribeStatus": {
@@ -20244,10 +18909,7 @@
             "type": "boolean"
           }
         },
-        "required": [
-          "valid",
-          "alreadyUnsubscribed"
-        ],
+        "required": ["valid", "alreadyUnsubscribed"],
         "additionalProperties": false
       },
       "OrgUserList": {
@@ -20274,14 +18936,7 @@
                 },
                 "role": {
                   "type": "string",
-                  "enum": [
-                    "super_admin",
-                    "account_admin",
-                    "admin",
-                    "developer",
-                    "team",
-                    "viewer"
-                  ]
+                  "enum": ["super_admin", "account_admin", "admin", "developer", "team", "viewer"]
                 },
                 "projectIds": {
                   "type": "array",
@@ -20300,10 +18955,7 @@
                   }
                 },
                 "jobTitle": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "invitedBy": {
                   "anyOf": [
@@ -20364,12 +19016,7 @@
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": [
-                "id",
-                "name",
-                "key",
-                "accountId"
-              ],
+              "required": ["id", "name", "key", "accountId"],
               "additionalProperties": false
             }
           },
@@ -20387,10 +19034,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "name"
-              ],
+              "required": ["id", "name"],
               "additionalProperties": false
             }
           },
@@ -20446,13 +19090,7 @@
             "additionalProperties": false
           }
         },
-        "required": [
-          "users",
-          "invitations",
-          "projects",
-          "accounts",
-          "scope"
-        ],
+        "required": ["users", "invitations", "projects", "accounts", "scope"],
         "additionalProperties": false
       },
       "OrgUser": {
@@ -20464,34 +19102,19 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
           "email": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "fullName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "firstName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "lastName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "jobTitle": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "createdAt": {
             "type": "string",
@@ -20502,14 +19125,7 @@
             "anyOf": [
               {
                 "type": "string",
-                "enum": [
-                  "super_admin",
-                  "account_admin",
-                  "admin",
-                  "developer",
-                  "team",
-                  "viewer"
-                ]
+                "enum": ["super_admin", "account_admin", "admin", "developer", "team", "viewer"]
               },
               {
                 "type": "null"
@@ -20583,11 +19199,7 @@
             "type": "boolean"
           }
         },
-        "required": [
-          "deleted",
-          "removedProjects",
-          "hasRemainingAccess"
-        ],
+        "required": ["deleted", "removedProjects", "hasRemainingAccess"],
         "additionalProperties": false
       },
       "UserOpenTickets": {
@@ -20618,13 +19230,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "code",
-                "title",
-                "projectId",
-                "projectName"
-              ],
+              "required": ["id", "code", "title", "projectId", "projectName"],
               "additionalProperties": false
             }
           },
@@ -20654,19 +19260,12 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "name"
-              ],
+              "required": ["id", "name"],
               "additionalProperties": false
             }
           }
         },
-        "required": [
-          "tickets",
-          "singleProjectId",
-          "candidates"
-        ],
+        "required": ["tickets", "singleProjectId", "candidates"],
         "additionalProperties": false
       },
       "ArchiveUserResult": {
@@ -20681,10 +19280,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "archived",
-          "reassignedTickets"
-        ],
+        "required": ["archived", "reassignedTickets"],
         "additionalProperties": false
       },
       "AuditLogPage": {
@@ -20709,28 +19305,16 @@
                   "type": "string"
                 },
                 "tableName": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "field": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "value": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "link": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "userId": {
                   "type": "string",
@@ -20753,10 +19337,7 @@
                   ]
                 },
                 "projectName": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "accountId": {
                   "anyOf": [
@@ -20771,10 +19352,7 @@
                   ]
                 },
                 "accountName": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 }
               },
               "required": [
@@ -20811,12 +19389,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "items",
-          "total",
-          "page",
-          "pageSize"
-        ],
+        "required": ["items", "total", "page", "pageSize"],
         "additionalProperties": false
       },
       "JiraStatus": {
@@ -20832,16 +19405,10 @@
             "type": "string"
           },
           "siteName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "siteUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "expiresAt": {
             "type": "string",
@@ -20850,17 +19417,10 @@
           },
           "callbackUrl": {
             "description": "OAuth redirect URI registered in Atlassian",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
-        "required": [
-          "connected",
-          "configured",
-          "callbackUrl"
-        ],
+        "required": ["connected", "configured", "callbackUrl"],
         "additionalProperties": false
       },
       "JiraConnectResult": {
@@ -20872,9 +19432,7 @@
             "description": "Atlassian consent URL; open it in a popup or tab"
           }
         },
-        "required": [
-          "authorizeUrl"
-        ],
+        "required": ["authorizeUrl"],
         "additionalProperties": false
       },
       "JiraOAuthCallbackPage": {
@@ -20888,27 +19446,16 @@
             "type": "string"
           },
           "name": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "url": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "active": {
             "type": "boolean"
           }
         },
-        "required": [
-          "cloudId",
-          "name",
-          "url",
-          "active"
-        ],
+        "required": ["cloudId", "name", "url", "active"],
         "additionalProperties": false
       },
       "JiraProject": {
@@ -20924,25 +19471,13 @@
             "type": "string"
           },
           "projectTypeKey": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "avatarUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
-        "required": [
-          "id",
-          "key",
-          "name",
-          "projectTypeKey",
-          "avatarUrl"
-        ],
+        "required": ["id", "key", "name", "projectTypeKey", "avatarUrl"],
         "additionalProperties": false
       },
       "JiraIssueSearchResult": {
@@ -20960,10 +19495,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "issues",
-          "total"
-        ],
+        "required": ["issues", "total"],
         "additionalProperties": false
       },
       "JiraIssue": {
@@ -20979,46 +19511,25 @@
             "type": "string"
           },
           "status": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "issueType": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "priority": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "assignee": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "reporter": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "created": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "updated": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "attachments": {
             "type": "array",
@@ -21041,24 +19552,13 @@
                   "type": "string"
                 },
                 "author": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "contentUrl": {
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "filename",
-                "mimeType",
-                "size",
-                "created",
-                "author",
-                "contentUrl"
-              ],
+              "required": ["id", "filename", "mimeType", "size", "created", "author", "contentUrl"],
               "additionalProperties": false
             }
           },
@@ -21071,27 +19571,16 @@
                   "type": "string"
                 },
                 "author": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "created": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "body": {
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "author",
-                "created",
-                "body"
-              ],
+              "required": ["id", "author", "created", "body"],
               "additionalProperties": false
             }
           },
@@ -21109,16 +19598,10 @@
                   "type": "string"
                 },
                 "author": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "started": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "timeSpentSeconds": {
                   "type": "number"
@@ -21127,13 +19610,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "id",
-                "author",
-                "started",
-                "timeSpentSeconds",
-                "comment"
-              ],
+              "required": ["id", "author", "started", "timeSpentSeconds", "comment"],
               "additionalProperties": false
             }
           },
@@ -21146,10 +19623,7 @@
             "type": "number"
           },
           "originalEstimateSeconds": {
-            "type": [
-              "number",
-              "null"
-            ]
+            "type": ["number", "null"]
           }
         },
         "required": [
@@ -21192,10 +19666,7 @@
             ]
           },
           "projectName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "tickets": {
             "type": "integer",
@@ -21203,12 +19674,7 @@
             "maximum": 9007199254740991
           }
         },
-        "required": [
-          "imported",
-          "projectId",
-          "projectName",
-          "tickets"
-        ],
+        "required": ["imported", "projectId", "projectName", "tickets"],
         "additionalProperties": false
       },
       "JiraImportProgress": {
@@ -21221,12 +19687,7 @@
           },
           "phase": {
             "type": "string",
-            "enum": [
-              "setup",
-              "issues",
-              "done",
-              "error"
-            ]
+            "enum": ["setup", "issues", "done", "error"]
           },
           "projectId": {
             "anyOf": [
@@ -21241,10 +19702,7 @@
             ]
           },
           "projectName": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           },
           "processed": {
             "type": "integer",
@@ -21280,24 +19738,14 @@
                   "type": "string"
                 },
                 "name": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "email": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "status": {
                   "type": "string",
-                  "enum": [
-                    "matched",
-                    "invitable",
-                    "unmatched"
-                  ]
+                  "enum": ["matched", "invitable", "unmatched"]
                 },
                 "tickets": {
                   "type": "integer",
@@ -21305,13 +19753,7 @@
                   "maximum": 9007199254740991
                 }
               },
-              "required": [
-                "key",
-                "name",
-                "email",
-                "status",
-                "tickets"
-              ],
+              "required": ["key", "name", "email", "status", "tickets"],
               "additionalProperties": false
             }
           },
@@ -21324,10 +19766,7 @@
             "type": "boolean"
           },
           "error": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
         "required": [
@@ -21359,17 +19798,10 @@
             "type": "string"
           },
           "email": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
-        "required": [
-          "id",
-          "name",
-          "email"
-        ],
+        "required": ["id", "name", "email"],
         "additionalProperties": false
       },
       "JiraAssignImportUsersResult": {
@@ -21384,10 +19816,7 @@
             "$ref": "#/components/schemas/JiraImportProgress"
           }
         },
-        "required": [
-          "assigned",
-          "progress"
-        ],
+        "required": ["assigned", "progress"],
         "additionalProperties": false
       },
       "JiraInviteImportedUsersResult": {
@@ -21405,10 +19834,7 @@
             }
           }
         },
-        "required": [
-          "sent",
-          "failed"
-        ],
+        "required": ["sent", "failed"],
         "additionalProperties": false
       },
       "JiraRepairAttributionResult": {
@@ -21445,10 +19871,7 @@
               "type": "object",
               "properties": {
                 "accountId": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "name": {
                   "type": "string"
@@ -21459,22 +19882,12 @@
                   "maximum": 9007199254740991
                 }
               },
-              "required": [
-                "accountId",
-                "name",
-                "worklogs"
-              ],
+              "required": ["accountId", "name", "worklogs"],
               "additionalProperties": false
             }
           }
         },
-        "required": [
-          "done",
-          "lastTicketId",
-          "comments",
-          "worklogs",
-          "unresolvedAuthors"
-        ],
+        "required": ["done", "lastTicketId", "comments", "worklogs", "unresolvedAuthors"],
         "additionalProperties": false
       }
     },

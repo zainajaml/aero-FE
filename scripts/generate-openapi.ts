@@ -1,4 +1,5 @@
-// Writes openapi/openapi.json from the route definitions. Placeholder config is enough:
+// Writes openapi/openapi.json from the route definitions (`npm run openapi:generate` then runs
+// Prettier on it, so format:check and the CI drift check agree). Placeholder config is enough:
 // building the document never connects to the database or sends email.
 import { mkdirSync, writeFileSync } from "node:fs";
 

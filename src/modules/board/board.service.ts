@@ -5,7 +5,7 @@ import type { Actor } from "../access/access.types.js";
 import { writeAuditEvent } from "../audit/audit.service.js";
 import * as repo from "./board.repository.js";
 
-export const toColumnDto = (row: repo.ColumnRow) => ({
+const toColumnDto = (row: repo.ColumnRow) => ({
   id: row.id,
   projectId: row.projectId,
   name: row.name,

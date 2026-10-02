@@ -11,7 +11,7 @@ export const pool = new pg.Pool({
 
 export const db = drizzle(pool, { schema, casing: "snake_case" });
 
-export type Database = typeof db;
+type Database = typeof db;
 /** A database handle usable both outside and inside a transaction. */
 export type DbExecutor = Database | Parameters<Parameters<Database["transaction"]>[0]>[0];
 

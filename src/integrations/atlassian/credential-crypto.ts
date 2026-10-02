@@ -26,7 +26,7 @@ export type CredentialCipher = {
   decrypt(envelope: string): string;
 };
 
-export function isEncryptedCredential(value: string | null | undefined): boolean {
+function isEncryptedCredential(value: string | null | undefined): boolean {
   if (!value) return false;
   const parts = value.split(".");
   return parts.length === 3 && parts[0] === VERSION && !!parts[1] && !!parts[2];

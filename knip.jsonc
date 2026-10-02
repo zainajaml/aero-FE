@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
+  "ignoreDependencies": [
+    // Required by @better-auth/mcp (it ships as a dependency of that plugin). Pinned at the top
+    // level so it stays on the same 1.7 line as better-auth and the oauth_* tables it defines.
+    "@better-auth/oauth-provider",
+    // Loaded by name as a pino transport in development (src/shared/observability/logger.ts).
+    "pino-pretty",
+  ],
+}

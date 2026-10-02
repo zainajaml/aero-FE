@@ -20,7 +20,7 @@ export type ClippedScope = { accountIds: string[]; projectIds: string[] };
  * Narrows the caller's admin scope to the account/project open in the UI. Null means no narrowing;
  * a context the caller does not administer is refused (an administered-nothing account yields empty).
  */
-export async function clipScopeToContext(
+async function clipScopeToContext(
   scope: AdminScope,
   context: AdminContext,
 ): Promise<ClippedScope | null> {

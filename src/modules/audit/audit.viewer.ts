@@ -15,7 +15,7 @@ const SORTS = {
   project: projects.name,
   account: accounts.name,
 } as const;
-export type AuditSort = keyof typeof SORTS;
+type AuditSort = keyof typeof SORTS;
 
 export type AuditQuery = {
   projectId?: string;

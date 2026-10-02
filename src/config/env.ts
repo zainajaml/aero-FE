@@ -113,7 +113,7 @@ const schema = z
 
 export type Env = z.infer<typeof schema>;
 
-export function parseEnv(source: Record<string, string | undefined>): Env {
+function parseEnv(source: Record<string, string | undefined>): Env {
   const result = schema.safeParse(source);
   if (!result.success) {
     const problems = result.error.issues.map(

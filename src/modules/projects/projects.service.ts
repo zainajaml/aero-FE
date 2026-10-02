@@ -15,7 +15,7 @@ import { listProjectAccessibleUsers } from "../users/people.repository.js";
 import { normalizeProjectKey, type ProjectType } from "./project-defaults.js";
 import * as repo from "./projects.repository.js";
 
-export function toProjectDto(row: repo.ProjectRow) {
+function toProjectDto(row: repo.ProjectRow) {
   return {
     id: row.id,
     name: row.name,

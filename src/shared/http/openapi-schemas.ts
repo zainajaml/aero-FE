@@ -1,11 +1,11 @@
 import { z } from "zod";
 import "zod-openapi";
 
-export const metaSchema = z
+const metaSchema = z
   .object({ requestId: z.string() })
   .meta({ id: "ResponseMeta", description: "Present on every JSON response" });
 
-export const pageMetaSchema = z
+const pageMetaSchema = z
   .object({
     requestId: z.string(),
     nextCursor: z
@@ -34,8 +34,3 @@ export function successEnvelope(data: z.ZodType) {
 export function paginatedEnvelope(item: z.ZodType) {
   return z.object({ data: z.array(item), meta: pageMetaSchema });
 }
-
-export const uuidParam = (name: string) =>
-  z.uuid().meta({ param: { name, in: "path" }, description: `${name} (UUID)` });
-
-export const isoDateTime = z.iso.datetime({ offset: true });

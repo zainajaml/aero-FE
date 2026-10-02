@@ -5,7 +5,7 @@ import type { Actor } from "../access/access.types.js";
 import { writeAuditEvent } from "../audit/audit.service.js";
 import * as repo from "./sprints.repository.js";
 
-export const toSprintDto = (row: repo.SprintRow) => ({
+const toSprintDto = (row: repo.SprintRow) => ({
   id: row.id,
   projectId: row.projectId,
   name: row.name,

@@ -10,7 +10,7 @@ import { suppressedEmails } from "../../database/schema/index.js";
 const sign = (payload: string) =>
   createHmac("sha256", `${env.AUTH_SECRET}:unsubscribe`).update(payload).digest("base64url");
 
-export function unsubscribeToken(email: string): string {
+function unsubscribeToken(email: string): string {
   const payload = Buffer.from(email.trim().toLowerCase()).toString("base64url");
   return `${payload}.${sign(payload)}`;
 }

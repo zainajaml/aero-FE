@@ -17,7 +17,7 @@ type CreatedUser = {
 };
 
 /** Applies the newest open invitation for the email, if any. Returns whether one was applied. */
-export async function applyOpenInvitation(userId: string, email: string): Promise<boolean> {
+async function applyOpenInvitation(userId: string, email: string): Promise<boolean> {
   return db.transaction(async (tx) => {
     const invitation = await findLatestOpenForEmail(tx, email);
     if (!invitation) return false;

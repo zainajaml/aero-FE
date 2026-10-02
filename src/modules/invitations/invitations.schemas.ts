@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { appRoleSchema } from "../access/me.schemas.js";
 
-export const invitationSchema = z
+const invitationSchema = z
   .object({
     id: z.uuid(),
     email: z.email(),

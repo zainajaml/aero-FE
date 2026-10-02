@@ -33,7 +33,7 @@ export const MAX_ESTIMATE_MINUTES = 999 * 60 + 59;
 
 // ------------------------------------------------------------------ DTOs
 
-export function toTicketSummary(row: repo.TicketSummaryRow) {
+function toTicketSummary(row: repo.TicketSummaryRow) {
   return {
     id: row.id,
     projectId: row.projectId,

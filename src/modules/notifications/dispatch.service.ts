@@ -12,8 +12,7 @@ import { TICKET_ASSIGNED_KEY, filterByPreference } from "./preferences.service.j
 
 type TicketRef = { id: string; projectId: string; title: string; code: string };
 
-export const ticketUrl = (ticketId: string) =>
-  new URL(`/ticket/${ticketId}`, env.APP_URL).toString();
+const ticketUrl = (ticketId: string) => new URL(`/ticket/${ticketId}`, env.APP_URL).toString();
 
 const meta = (kind: string, actorId: string, actorName: string, ticket: TicketRef) => ({
   kind,

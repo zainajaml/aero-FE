@@ -95,15 +95,6 @@ export async function listVisibleProjectAccounts(
   return base.where(or(...conditions));
 }
 
-export async function hasProjectMembership(db: DbExecutor, userId: string): Promise<boolean> {
-  const rows = await db
-    .select({ projectId: projectMembers.projectId })
-    .from(projectMembers)
-    .where(eq(projectMembers.userId, userId))
-    .limit(1);
-  return rows.length > 0;
-}
-
 export async function isUserArchived(db: DbExecutor, userId: string): Promise<boolean> {
   const rows = await db
     .select({ id: profiles.id })
