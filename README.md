@@ -1,4 +1,4 @@
-# aero-zenith-flow-backend
+# aero-backend
 
 Express 5 + PostgreSQL API for Space Scope. Replaces the Supabase/Lovable backend of the original
 `aero-zenith-flow` application. The React frontend lives in the sibling `aero-zenith-flow-frontend`
