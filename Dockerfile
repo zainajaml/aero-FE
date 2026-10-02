@@ -19,7 +19,7 @@ COPY --from=build --chown=node:node /app/dist ./dist
 USER node
 EXPOSE 4000
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s --retries=3 \
-  CMD wget -qO- "http://127.0.0.1:${PORT:-4000}/health" >/dev/null || exit 1
+  CMD wget -qO- "http://127.0.0.1:${PORT:-4000}/health/ready" >/dev/null || exit 1
 ENTRYPOINT ["/sbin/tini", "--"]
 # Migrations run as a separate one-off step (see docker-compose.prod.yml): `node dist/database/migrate.js`.
 CMD ["node", "dist/server.js"]

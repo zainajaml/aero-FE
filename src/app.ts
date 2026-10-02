@@ -35,7 +35,11 @@ export function createApp() {
     pinoHttp({
       logger,
       genReqId: (req) => (req as express.Request).id,
-      autoLogging: env.NODE_ENV !== "test",
+      // Health probes run every few seconds; logging them would drown the access log.
+      autoLogging:
+        env.NODE_ENV === "test"
+          ? false
+          : { ignore: (req) => req.url?.startsWith("/health") ?? false },
     }),
   );
   app.use(helmet());
