@@ -12,6 +12,7 @@ import {
   createAccount,
   createActor,
   createProject,
+  mailFor,
   makeAccountAdmin,
   outbox,
   signIn,
@@ -215,5 +216,60 @@ describe("invitation applied after verification (replaces handle_new_user)", () 
     await signIn(agent, "invited@example.com");
     const { body } = await agent.get("/api/v1/me/access");
     expect(body.data.status).toBe("active");
+  });
+});
+
+describe("password reset and change", () => {
+  it("resets a forgotten password by emailed token and revokes old sessions", async () => {
+    const actor = await createActor();
+    const anonymous = request.agent(app);
+    const asked = await anonymous
+      .post("/api/auth/request-password-reset")
+      .set("Origin", APP_ORIGIN)
+      .send({ email: actor.email, redirectTo: `${APP_ORIGIN}/reset-password` });
+    expect(asked.status).toBe(200);
+    // Unknown addresses get the same answer (no account enumeration) and no email.
+    const unknown = await anonymous
+      .post("/api/auth/request-password-reset")
+      .set("Origin", APP_ORIGIN)
+      .send({ email: "nobody@example.com", redirectTo: `${APP_ORIGIN}/reset-password` });
+    expect(unknown.status).toBe(200);
+    expect(outbox().filter((m) => m.to === "nobody@example.com")).toHaveLength(0);
+
+    const mail = mailFor(actor.email).at(-1)!;
+    const token = /reset-password\/([A-Za-z0-9_-]+)/.exec(JSON.stringify(mail))![1];
+    const bad = await anonymous
+      .post("/api/auth/reset-password")
+      .set("Origin", APP_ORIGIN)
+      .send({ token: "not-a-token", newPassword: "a-brand-new-password" });
+    expect(bad.status).toBe(400);
+    const reset = await anonymous
+      .post("/api/auth/reset-password")
+      .set("Origin", APP_ORIGIN)
+      .send({ token, newPassword: "a-brand-new-password" });
+    expect(reset.status).toBe(200);
+
+    expect((await actor.agent.get("/api/v1/me")).status).toBe(401);
+    await expect(signIn(request.agent(app), actor.email)).rejects.toThrow(/401/);
+    await signIn(request.agent(app), actor.email, "a-brand-new-password");
+  });
+
+  it("changes the password only with the current one", async () => {
+    const actor = await createActor();
+    const wrong = await actor.agent
+      .post("/api/auth/change-password")
+      .set("Origin", APP_ORIGIN)
+      .send({ currentPassword: "wrong-password-123", newPassword: "another-new-password" });
+    expect(wrong.status).toBe(400);
+    const changed = await actor.agent
+      .post("/api/auth/change-password")
+      .set("Origin", APP_ORIGIN)
+      .send({
+        currentPassword: PASSWORD,
+        newPassword: "another-new-password",
+        revokeOtherSessions: true,
+      });
+    expect(changed.status).toBe(200);
+    await signIn(request.agent(app), actor.email, "another-new-password");
   });
 });
