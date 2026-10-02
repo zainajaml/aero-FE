@@ -103,3 +103,30 @@ SMOKE PASSED
 server stopped
 dropped database azf_smoke_1790918877_test
 ```
+
+## Browser journeys (2026-10-02)
+
+Environment:
+
+- Backend from this repo (`tsx src/server.ts`) on port 4200, against a database built from all migrations from zero (`azf_e2e` on the dev Postgres 17 container).
+- Frontend Vite dev server on port 5190, proxying `/api`.
+- Mailpit for email; RustFS for storage.
+
+Command (frontend repo): `E2E_BASE_URL=http://localhost:5190 MAILPIT_URL=http://localhost:8026 npx playwright test`
+
+Result: 11 passed, 11 passed (two runs in a row, 34.3s and 31.3s).
+
+Covered:
+
+- auth: sign-up → verify → onboarding, sign-in with a wrong password denied, route guard;
+- tickets: create, edit, comment, log time, deep link;
+- sprint planning and a real board drag;
+- invitation and a viewer's read-only view;
+- documents;
+- support widget;
+- notifications, including invitations;
+- profile and preferences.
+
+## Startup configuration check
+
+The server exits with code 1 and a named error ("AUTH_SECRET: Invalid input…" / "Too small: expected >=32 characters") when `AUTH_SECRET` is missing or too short.
